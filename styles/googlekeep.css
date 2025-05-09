@@ -1,0 +1,154 @@
+.googlekeep-container {
+    position: fixed;
+    top: 0;
+    right: -400px;
+    width: 380px;
+    height: 100%;
+    background-color: rgba(32, 33, 36, 0.95);
+    z-index: 1000;
+    transition: right 0.3s ease;
+    box-shadow: -2px 0 10px rgba(0, 0, 0, 0.3);
+    color: #e8eaed;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.googlekeep-container.visible {
+    right: 0;
+}
+
+#googleKeepPanel {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.googlekeep-header {
+    padding: 16px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.googlekeep-header-title {
+    margin: 0;
+    flex-grow: 1;
+    color: #fbbc04; /* Google Keep's yellow color */
+}
+
+.close-googlekeep,
+.clean-googlekeep {
+    background: transparent;
+    border: none;
+    color: #e8eaed;
+    font-size: 24px;
+    cursor: pointer;
+    padding: 4px 8px;
+    margin-left: 8px;
+}
+
+.close-googlekeep:hover,
+.clean-googlekeep:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.googlekeep-content {
+    flex-grow: 1;
+    padding: 16px;
+    overflow-y: auto;
+}
+
+.googlekeep-auth-section {
+    text-align: center;
+    padding: 32px 16px;
+}
+
+.keep-btn {
+    background-color: #fbbc04;
+    color: #202124;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    font-weight: 500;
+    cursor: pointer;
+    margin-top: 16px;
+}
+
+.keep-btn:hover {
+    background-color: #f9a602;
+}
+
+.notes-controls {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 16px;
+}
+
+.notes-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.note-card {
+    background-color: rgba(251, 188, 4, 0.12);
+    border-left: 3px solid #fbbc04;
+    padding: 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.note-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.note-card h4 {
+    margin: 0 0 8px 0;
+    color: #e8eaed;
+}
+
+.note-card p {
+    margin: 0;
+    color: #9aa0a6;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.note-title-input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 8px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+    color: #e8eaed;
+}
+
+.note-content-input {
+    width: 100%;
+    min-height: 150px;
+    padding: 8px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+    color: #e8eaed;
+    resize: vertical;
+    margin-bottom: 16px;
+}
+
+.editor-controls {
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+}
+
+.googlekeep-status {
+    text-align: center;
+    padding: 8px;
+    font-size: 0.9em;
+    color: #9aa0a6;
+}

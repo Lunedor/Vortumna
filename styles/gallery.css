@@ -1,0 +1,308 @@
+#imageGalleryContainer {
+    position: fixed;
+    top: 20px;
+    right: 70px;
+    z-index: 15;
+}
+
+.gallery-icon {
+    color: white;
+    font-size: 20px;
+}
+
+#galleryToggleBtn .gallery-icon {
+    padding: 0 0px 3px 0px;
+    transform: rotate(270deg);
+}
+
+#imageGalleryPanel {
+    background-color: rgba(30, 30, 30, 0.95);
+    border-radius: 10px;
+    width: 500px;
+    height: 620px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    color: white;
+    display: none;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+    overflow: hidden;
+    position: relative;
+}
+
+#imageGalleryPanel.visible {
+    display: block;
+    animation: fadeInScale 0.2s ease-out forwards;
+}
+
+.favorites-header, .gallery-header {
+    padding: 12px 16px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333;
+}
+
+.gallery-header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 2;
+}
+
+#quote-header h3, .favorites-header h3, .gallery-header h3 {
+    margin: 0;
+    color: #1DB954;
+    font-size: 18px;
+}
+
+/* Add close button for image gallery */
+.close-gallery {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 22px;
+    cursor: pointer;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.7;
+    transition: opacity 0.2s, transform 0.2s;
+}
+
+.close-gallery:hover {
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+.gallery-content {
+    padding: 12px;
+    overflow-y: auto;
+    max-height: calc(100% - 52px); /* 52px accounts for the header height + padding */
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    position: absolute;
+    padding-top: 60px; /* Adjusted to account for the header height */
+}
+
+.gallery-item {
+    position: relative;
+    aspect-ratio: 1;
+    border-radius: 8px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.gallery-item:hover {
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.remove-favorite, .gallery-item .delete-image {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background-color: rgba(231, 76, 60, 0.8);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 22px;
+    height: 22px;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+.favorite-quote-item:hover .remove-favorite, .gallery-item:hover .delete-image {
+    opacity: 1;
+}
+
+.remove-favorite:hover, .delete-image:hover {
+    background-color: rgba(231, 76, 60, 1);
+}
+
+.gallery-item.deleting {
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+.gallery-item.deleting::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 20px;
+    height: 20px;
+    border: 2px solid rgba(255, 255, 255, 0.7);
+    border-top-color: transparent;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+.image-info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    font-size: 10px;
+}
+
+.location-name {
+    font-weight: bold;
+    line-height: 1.5em;
+    height: 1.7em;
+    overflow: hidden;
+}
+
+.save-date {
+    opacity: 0.8;
+}
+
+.save-feedback {
+    position: fixed;
+    bottom: 80px;
+    right: 70px;
+    background-color: rgba(29, 185, 84, 0.9);
+    color: white;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 14px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.3s ease;
+    z-index: 20;
+}
+
+.save-feedback.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Empty gallery state */
+.empty-gallery {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 250px;
+    text-align: center;
+    padding: 20px;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.empty-gallery-icon {
+    font-size: 48px;
+    margin-bottom: 15px;
+    opacity: 0.7;
+}
+
+.empty-gallery p {
+    margin: 5px 0;
+    font-size: 16px;
+}
+
+.empty-gallery .empty-gallery-hint {
+    font-size: 14px;
+    opacity: 0.8;
+    font-style: italic;
+    margin-top: 10px;
+}
+
+/* Image Preview Modal */
+#imagePreviewModal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    z-index: 4;
+    justify-content: center;
+    align-items: center;
+}
+
+#imagePreviewModal.visible {
+    display: flex;
+}
+
+.preview-content {
+    position: relative;
+    max-width: 90%;
+    max-height: 90vh;
+}
+
+.preview-content img {
+    max-width: 100%;
+    max-height: 90vh;
+    object-fit: contain;
+    border-radius: 8px;
+}
+
+.preview-content .preview-info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+
+.preview-content .preview-info .location-name {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.preview-content .preview-info .save-date {
+    font-size: 14px;
+    opacity: 0.8;
+}
+
+.close-preview {
+    position: absolute;
+    top: -40px;
+    right: 0;
+    color: white;
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.close-preview:hover {
+    transform: scale(1.1);
+}
+
+@keyframes spin {
+    to { transform: translate(-50%, -50%) rotate(360deg); }
+}

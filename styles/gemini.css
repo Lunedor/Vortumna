@@ -1,0 +1,805 @@
+/* Gemini Chat Styles */
+.openrouter-chat-container, .gemini-chat-container {
+    position: fixed;
+    top: 34%;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    pointer-events: none;
+}
+
+/* API Key feedback styles */
+.gemini-feedback, .openrouter-feedback {
+    margin-bottom: 10px;
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10000; 
+    color: white;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-weight: bold;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    max-width: 30%;
+    text-align: center;
+    animation: fadeInUp 0.5s ease forwards;
+}
+
+/* Success and error feedback styles for CSP compatibility */
+.gemini-feedback.success-feedback {
+    background-color: rgba(25, 135, 84, 0.9); /* Success green */
+}
+
+.gemini-feedback.error-feedback {
+    background-color: rgba(220, 53, 69, 0.9); /* Error red */
+}
+
+.gemini-feedback.fade-out {
+    animation: fadeOutDown 0.5s ease forwards;
+}
+
+/* Animations for feedback messages */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translate(-50%, 20px);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, 0);
+    }
+}
+
+@keyframes fadeOutDown {
+    from {
+        opacity: 1;
+        transform: translate(-50%, 0);
+    }
+    to {
+        opacity: 0;
+        transform: translate(-50%, 20px);
+    }
+}
+
+@keyframes fadeInSlide {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Common Chat Panel Styles */
+#geminiChatPanel, #openrouterChatPanel {
+    position: relative;
+    width: 100%;
+    max-width: 900px;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s ease;
+    border: var(--border);
+    margin: 0 auto;
+    transform: translateY(-50%);
+}
+
+#geminiChatPanel.visible, #openrouterChatPanel.visible {
+    opacity: 1;
+    pointer-events: all;
+}
+
+/* Common Header Styles */
+.gemini-header, .openrouter-header {
+    background-color: #333;
+    color: white;
+    padding: 5px 10px 10px 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    -webkit-backdrop-filter: var(--background-filter);
+    backdrop-filter: var(--background-filter);
+    border-bottom: 1px solid white;
+    height: 75px;
+}
+
+.gemini-header-title, .openrouter-header-title {
+    margin: 0;
+    height: 30px;
+    flex-grow: 1;
+    margin-left: 62px;
+}
+
+.gemini-header img, .openrouter-header img {
+    width: auto;
+    height: 30px;
+    margin: auto;
+    filter: drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.85));
+}
+
+/* Model Selector Styles */
+.gemini-model-selector, .openrouter-model-selector {
+    margin-top: 10px;
+    width: 100%;
+    order: 3;
+}
+
+.gemini-model-selector select, .openrouter-model-selector select {
+    width: 100%;
+    padding: 5px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    background-color: rgba(17, 17, 17, 0.8);
+    color: white;
+}
+
+.gemini-model-selector select option, .openrouter-model-selector select option {
+    background-color: #282828;
+    color: white;
+}
+
+/* Close Button Styles */
+.close-gemini, .close-openrouter {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 32px;
+    cursor: pointer;
+    padding: 0;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.close-gemini:hover, .close-openrouter:hover {
+    color: black;
+}
+
+/* Messages Container Styles */
+.gemini-messages, .openrouter-messages {
+    flex: 1;
+    overflow-y: auto;
+    padding: 120px 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background-color: #171717;
+    max-height: 0;
+}
+
+/* Message Bubbles */
+.gemini-message, .openrouter-message {
+    max-width: 80%;
+    padding: 10px 15px;
+    border-radius: 18px;
+    line-height: 1.4;
+    word-wrap: break-word;
+    font-size: 14px;
+    position: relative;
+    padding-right: 30px;
+    padding-bottom: 25px;
+    font-weight: 400;
+}
+
+.gemini-message.user {
+    align-self: flex-end;
+    background-color: #7c4dff;
+    color: white;
+    border-bottom-right-radius: 4px;
+    text-align: start;
+}
+
+.openrouter-message.user {
+    align-self: flex-end;
+    background-color: #4d7cff;
+    color: white;
+    border-bottom-right-radius: 4px;
+    text-align: start;
+}
+
+.gemini-message.ai, .openrouter-message.ai {
+    align-self: flex-start;
+    background-color: #e0e0e0;
+    color: #333;
+    border-bottom-left-radius: 4px;
+    text-align: left;
+}
+
+/* Code Formatting for Messages */
+.gemini-message pre, .openrouter-message pre {
+    margin: 10px 0;
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    overflow-x: auto;
+    font-family: monospace;
+    font-size: 13px;
+}
+
+.gemini-message code, .openrouter-message code {
+    background-color: rgba(0, 0, 0, 0.1);
+    padding: 3px 5px;
+    border-radius: 3px;
+    font-family: monospace;
+    font-size: 13px;
+}
+
+.gemini-message.ai pre, .openrouter-message.ai pre {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.gemini-message.ai code, .openrouter-message.ai code {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.gemini-message img, .openrouter-message img {
+    max-width: 100%;
+    border-radius: 8px;
+    margin-top: 5px;
+}
+
+/* Input Container Styles */
+.gemini-input-container, .openrouter-input-container {
+    padding: 10px;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    background-color: #333;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    position: relative;
+    align-items: center;
+    width: 100%;
+    box-sizing: border-box;
+    z-index: 1050;
+}
+
+.gemini-actions, .openrouter-actions {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+/* Common Button Styles */
+.image-upload-btn, .doc-upload-btn, .search-btn, .image-btn {
+    background: none;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+}
+
+/* Specific hover styles for each service */
+.gemini-actions .image-upload-btn:hover, 
+.gemini-actions .doc-upload-btn:hover, 
+.gemini-actions .search-btn:hover, 
+.gemini-actions .image-btn:hover {
+    background-color: #7c4dff;
+}
+
+.openrouter-actions .image-upload-btn:hover, 
+.openrouter-actions .doc-upload-btn:hover, 
+.openrouter-actions .search-btn:hover, 
+.openrouter-actions .image-btn:hover {
+    background-color: #4d7cff;
+}
+
+/* Send Button Styles */
+#geminiSendBtn {
+    background-color: #7c4dff;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 18px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+#geminiSendBtn:hover {
+    background-color: #6a37ff;
+}
+
+#openrouterSendBtn {
+    background-color: #4d7cff;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 18px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+#openrouterSendBtn:hover {
+    background-color: #375cff;
+}
+
+.settings-button {
+    background-color: rgb(29, 186, 84);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 4px 10px;
+    cursor: pointer;
+}
+
+/* Typing Animation */
+.message-typing {
+    align-self: flex-start;
+    background-color: #e0e0e0;
+    border-radius: 18px;
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.typing-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: #888;
+    animation: typing-animation 1.5s infinite ease-in-out;
+}
+
+.typing-dot:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.typing-dot:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.typing-dot:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+@keyframes typing-animation {
+    0%, 60%, 100% {
+        transform: translateY(0);
+    }
+    30% {
+        transform: translateY(-5px);
+    }
+}
+
+/* Image & File Preview Styles */
+.uploaded-image-preview {
+    max-width: 100px;
+    max-height: 100px;
+    border-radius: 8px;
+    margin-right: 10px;
+}
+
+.gemini-error {
+    background-color: rgba(220, 53, 69, 0.3);
+    color: #fff;
+    padding: 8px 12px;
+    border-radius: 8px;
+    margin-bottom: 8px;
+    font-size: 13px;
+}
+
+.gemini-action-buttons {
+    display: flex;
+    gap: 8px;
+}
+
+.image-generation-active, .search-mode-active {
+    background-color: #e9e2ff !important;
+    color: #7c4dff;
+}
+
+/* Clean Chat Button */
+.clean-gemini-chat, .clean-openrouter-chat {
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    margin: 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    filter: invert(1);
+}
+
+.clean-gemini-chat:hover, .clean-openrouter-chat:hover {
+    filter: invert(0);
+}
+
+.uploaded-doc-preview {
+    display: flex;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 5px 10px;
+    border-radius: 6px;
+    font-size: 12px;
+    margin-right: 10px;
+}
+
+.uploaded-doc-preview:before {
+    content: "📄";
+    margin-right: 5px;
+}
+
+/* File Preview Styles */
+.file-preview-container {
+    display: inline-flex;
+    position: relative;
+    margin-right: 8px;
+    margin-bottom: 8px;
+    max-width: 100px;
+    max-height: 80px;
+    border-radius: 4px;
+    overflow: hidden;
+    border: 1px solid #ddd;
+    background-color: #f9f9f9;
+}
+
+.file-preview-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.file-preview-document {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    padding: 4px;
+}
+
+.file-icon {
+    font-size: 20px;
+    margin-bottom: 3px;
+}
+
+.file-name {
+    font-size: 10px;
+    max-width: 90px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    text-align: center;
+}
+
+/* File & Button Controls */
+.remove-file-btn {
+    position: absolute;
+    top: 3px;
+    right: 3px;
+    background-color: rgba(231, 76, 60, 0.8);
+    color: white;
+    border: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    cursor: pointer;
+    padding: 0;
+    line-height: 1;
+    opacity: 0.85;
+    transition: all 0.2s ease;
+    z-index: 5;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+}
+
+.remove-file-btn:hover {
+    background-color: rgba(231, 76, 60, 1);
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+.file-preview-container:hover .remove-file-btn {
+    opacity: 1;
+}
+
+/* Image download button */
+.image-download-container {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.image-download-btn {
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    cursor: pointer;
+    padding: 0;
+}
+
+.image-download-btn:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Adjust message positioning for images */
+.gemini-message:has(.gemini-chat-image), .openrouter-message:has(.openrouter-chat-image) {
+    position: relative;
+    padding-bottom: 5px;
+    max-width: 300px;
+}
+
+/* Enhanced Markdown Styles */
+/* Style markdown content */
+.gemini-message.ai .markdown-content, .openrouter-message.ai .markdown-content {
+    font-family: inherit;
+    line-height: 1.5;
+}
+
+/* Headers */
+.gemini-message.ai .markdown-content h1,
+.gemini-message.ai .markdown-content h2,
+.gemini-message.ai .markdown-content h3,
+.gemini-message.ai .markdown-content h4,
+.gemini-message.ai .markdown-content h5,
+.gemini-message.ai .markdown-content h6,
+.openrouter-message.ai .markdown-content h1,
+.openrouter-message.ai .markdown-content h2,
+.openrouter-message.ai .markdown-content h3,
+.openrouter-message.ai .markdown-content h4,
+.openrouter-message.ai .markdown-content h5,
+.openrouter-message.ai .markdown-content h6 {
+    margin-top: 1em;
+    margin-bottom: 0.5em;
+    font-weight: bold;
+    line-height: 1.2;
+}
+
+.gemini-message.ai .markdown-content h1, .openrouter-message.ai .markdown-content h1 { font-size: 1.8em; }
+.gemini-message.ai .markdown-content h2, .openrouter-message.ai .markdown-content h2 { font-size: 1.5em; }
+.gemini-message.ai .markdown-content h3, .openrouter-message.ai .markdown-content h3 { font-size: 1.3em; }
+.gemini-message.ai .markdown-content h4, .openrouter-message.ai .markdown-content h4 { font-size: 1.2em; }
+.gemini-message.ai .markdown-content h5, .openrouter-message.ai .markdown-content h5 { font-size: 1.1em; }
+.gemini-message.ai .markdown-content h6, .openrouter-message.ai .markdown-content h6 { font-size: 1em; }
+
+/* Lists */
+.gemini-message.ai .markdown-content ul,
+.gemini-message.ai .markdown-content ol,
+.openrouter-message.ai .markdown-content ul,
+.openrouter-message.ai .markdown-content ol {
+    margin-top: 0.5em;
+    margin-bottom: 1em;
+    padding-left: 2em;
+}
+
+.gemini-message.ai .markdown-content ul, .openrouter-message.ai .markdown-content ul {
+    list-style-type: disc;
+}
+
+.gemini-message.ai .markdown-content ol, .openrouter-message.ai .markdown-content ol {
+    list-style-type: decimal;
+}
+
+.gemini-message.ai .markdown-content li, .openrouter-message.ai .markdown-content li {
+    margin-bottom: 0.3em;
+}
+
+.gemini-message.ai .markdown-content li > ul,
+.gemini-message.ai .markdown-content li > ol,
+.openrouter-message.ai .markdown-content li > ul,
+.openrouter-message.ai .markdown-content li > ol {
+    margin-top: 0.3em;
+    margin-bottom: 0.5em;
+}
+
+/* Blockquotes */
+.gemini-message.ai .markdown-content blockquote, .openrouter-message.ai .markdown-content blockquote {
+    margin: 1em 0;
+    padding: 0.5em 1em;
+    border-left: 4px solid #ccc;
+    background-color: rgba(0, 0, 0, 0.05);
+    font-style: italic;
+}
+
+/* Tables */
+.gemini-message.ai .markdown-content table, .openrouter-message.ai .markdown-content table {
+    border-collapse: collapse;
+    margin: 1em 0;
+    width: 100%;
+}
+
+.gemini-message.ai .markdown-content th,
+.gemini-message.ai .markdown-content td,
+.openrouter-message.ai .markdown-content th,
+.openrouter-message.ai .markdown-content td {
+    border: 1px solid #ddd;
+    padding: 0.5em;
+    text-align: left;
+}
+
+.gemini-message.ai .markdown-content th, .openrouter-message.ai .markdown-content th {
+    background-color: rgba(0, 0, 0, 0.1);
+    font-weight: bold;
+}
+
+.gemini-message.ai .markdown-content tr:nth-child(even), .openrouter-message.ai .markdown-content tr:nth-child(even) {
+    background-color: rgba(0, 0, 0, 0.03);
+}
+
+/* Links */
+.gemini-message.ai .markdown-content a {
+    color: #7c4dff;
+    text-decoration: none;
+}
+
+.openrouter-message.ai .markdown-content a {
+    color: #4d7cff;
+    text-decoration: none;
+}
+
+.gemini-message.ai .markdown-content a:hover, .openrouter-message.ai .markdown-content a:hover {
+    text-decoration: underline;
+}
+
+/* Images */
+.gemini-message.ai .markdown-content img, .openrouter-message.ai .markdown-content img {
+    max-width: 100%;
+    border-radius: 4px;
+    margin: 0.5em 0;
+}
+
+/* Code blocks and inline code */
+.gemini-message.ai .markdown-content pre, .openrouter-message.ai .markdown-content pre {
+    margin: 10px 0;
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    overflow-x: auto;
+    font-family: monospace;
+    font-size: 13px;
+}
+
+.gemini-message.ai .markdown-content code, .openrouter-message.ai .markdown-content code {
+    background-color: rgba(0, 0, 0, 0.1);
+    padding: 3px 5px;
+    border-radius: 3px;
+    font-family: monospace;
+    font-size: 13px;
+}
+
+.gemini-message.ai .markdown-content pre code, .openrouter-message.ai .markdown-content pre code {
+    padding: 0;
+    background-color: transparent;
+}
+
+/* Horizontal Rule */
+.gemini-message.ai .markdown-content hr, .openrouter-message.ai .markdown-content hr {
+    border: 0;
+    border-top: 1px solid #ddd;
+    margin: 1em 0;
+}
+
+/* Make the chat container responsive */
+@media (max-width: 600px) {
+    #geminiChatPanel, #openrouterChatPanel {
+        width: 90vw;
+        height: 60vh;
+    }
+    #geminiChatPanel {
+        left: 5vw;
+    }
+    #openrouterChatPanel {
+        right: 5vw;
+    }
+}
+
+/* Copy message button styling */
+.copy-message-btn {
+    opacity: 0.4;
+    font-size: 14px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    padding: 3px;
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    transition: opacity 0.2s ease;
+}
+
+.copy-message-btn:hover {
+    opacity: 1;
+}
+
+/* Style for successful copy feedback */
+.copy-success {
+    color: #19a974;
+    font-size: 14px;
+}
+
+.side-actions {
+    display: flex;
+    gap: 10px;
+}
+
+
+/* Highlight Drop Zone with OpenRouter blue color */
+.openrouter-actions .highlight-drop-zone {
+    background-color: rgba(77, 124, 255, 0.1);
+    border: 2px dashed #4d7cff;
+    border-radius: 8px;
+}
+
+.buttons-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    right: -20px;
+    top: 20px;
+    gap: 10px;
+    padding: 0 40px;
+    transform: translateX(70px);
+    transition: transform 0.5s ease;
+    z-index: 5;
+}
+.buttons-container:hover {
+    transform: translateX(0);
+    transition: transform 0.5s ease;
+}
+.buttons-container button {
+    font-size: 20px;
+}
+
+/* Overlay style for modal effect when chat panels are visible */
+.overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    pointer-events: none;
+    filter: brightness(0.1);
+    z-index: 900;
+}
+
+#geminiInput, #openrouterInput {
+    background-color: white;
+    color: black;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+    font-size: 14px;
+}
+/* Show the overlay when chat panels are visible */
+#geminiChatPanel.visible ~ #geminiOverlay,
+#geminiChatContainer:has(#geminiChatPanel.visible) ~ #geminiOverlay,
+#openrouterChatPanel.visible ~ #openrouterOverlay,
+#openrouterChatContainer:has(#openrouterChatPanel.visible) ~ #openrouterOverlay {
+    display: block;
+}
+
+svg.si-glyph.si-glyph-brush-1 {
+    margin-top: 10px;
+}

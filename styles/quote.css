@@ -1,0 +1,226 @@
+/* Quote container styles */
+#quote-container {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    background-color: var(--item-background-color);
+    border-radius: 10px;
+    padding: 10px;
+    margin: 20px auto;
+    box-shadow: var(--box-shadow);
+    transition: all 0.3s ease;
+    color: #fff;
+    border: var(--border);
+    -webkit-backdrop-filter: var(--background-filter);
+    backdrop-filter: var(--background-filter);
+    width: 700px;
+    align-items: center;
+    padding-left: 50px;
+}
+
+.quote-bookmark-btn {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background: transparent;
+    border: none;
+    color: #ffc107;
+    font-size: 18px;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.5;
+    border-radius: 15px;
+}
+
+.quote-bookmark-btn:hover {
+    transform: scale(1.1);
+    opacity: 1;
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.quote-bookmark-btn.active {
+    opacity: 1;
+}
+
+.quote-refresh-btn {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    background: transparent;
+    border: none;
+    color: #ffffff;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.5;
+    border-radius: 15px;
+}
+
+.quote-refresh-btn:hover {
+    transform: rotate(180deg);
+    opacity: 1;
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+#quote-favorites-container {
+    position: fixed;
+    top: 20px;
+    right: 70px;
+    z-index: 15;
+    width: 500px;
+    height: 620px;
+    border-radius: 10px;
+    border: var(--border);
+    -webkit-backdrop-filter: var(--background-filter);
+    backdrop-filter: var(--background-filter);
+    display: none;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    padding: 0;
+    flex-direction: column;
+    overflow: hidden;
+    background-color: var(--background-color);
+}
+
+#quote-favorites-container.show {
+    display: flex;
+}
+
+/* Add close button for quote favorites */
+.close-quote-favorites {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 22px;
+    cursor: pointer;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.7;
+    transition: opacity 0.2s, transform 0.2s;
+}
+
+.close-quote-favorites:hover {
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+#favorites-content {
+    overflow-y: auto;
+    max-height: calc(620px - 60px); /* Container max-height minus header height */
+    padding: 10px;
+    flex-grow: 1;
+}
+
+#quote-header {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    margin: auto;
+    width: 100%;
+}
+
+.favorite-quote-item {
+    padding: 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.favorite-quote-item:last-child {
+    border-bottom: none;
+}
+
+.favorite-quote-image {
+    width: auto;
+    height: 90px;
+    border-radius: 5px;
+    margin-right: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+#quote-content, .favorite-quote-content {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    color: #fff;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+#quote-info, .favorite-quote-info {
+    margin-top: 5px;
+    margin-right: 25px;
+    text-align: right;
+    width: 100%;
+}
+
+#quote-author, .favorite-quote-author {
+    font-weight: bold;
+    font-size: 14px;
+    margin: 0 0 5px 0;
+    filter: drop-shadow(1px 1px 1px black);
+}
+
+#quote-book, .favorite-quote-book {
+    font-size: 12px;
+    font-style: italic;
+    margin: 0;
+    opacity: 0.8;
+    filter: drop-shadow(1px 1px 1px black);
+}
+
+#quote-text, .favorite-quote-text {
+    font-style: italic;
+    margin-bottom: 5px;
+    font-size: 16px;
+    line-height: 1.5;
+    filter: drop-shadow(1px 1px 1px black);
+    margin-right: 25px;
+}
+
+#quote-image {
+    max-width: 70px;
+    height: auto;
+    border-radius: 5px;
+    filter: drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.7));
+}
+
+.empty-favorites {
+    padding: 20px;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.7);
+    font-style: italic;
+}
+
+/* Settings for quote */
+#show-quotes {
+    margin-right: 10px;
+}
+
+/* Adjustments for smaller screens */
+@media (max-width: 768px) {
+    #quote-container {
+        margin: 15px;
+        padding: 15px;
+    }
+    
+    #quote-text {
+        font-size: 16px;
+    }
+}

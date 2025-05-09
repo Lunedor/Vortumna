@@ -1,0 +1,304 @@
+#bookmarksSection {
+    width: 85%;
+    margin: auto;
+    border-radius: 10px;
+    position: relative; /* Needed for absolute positioning of ::after */
+    /* Add some padding at the bottom if the indicator sits there */
+    padding-bottom: 10px; /* Adjust as needed */
+    
+}
+
+#bookmarksSection:hover {
+    width: 85%;
+    transition: transform 0.3s ease-in-out;
+    cursor: pointer; /* Change cursor to pointer on hover */
+}
+
+#bookmarksSection:has(#bookmarksContainer.hover-hide-mode):not(:hover) {
+    width: 10%;
+    transition-delay: 3s;
+}
+
+/* Style for the subtle indicator */
+#bookmarksSection::after {
+    content: '\1F517';
+    font-size: 20px; /* Adjust size */
+    font-weight: 100;
+    position: absolute;
+    color: white;
+    bottom: 20px; /* Position at the very bottom of the section */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120px; /* Adjust width */
+    height: 2px; /* Make it thin */
+    border-radius: 1px;
+    opacity: 0; /* Hidden by default */
+    transition: opacity 0.4s ease;
+    pointer-events: none; /* Prevent interference */
+    z-index: 0; /* Ensure it's behind content if needed */
+}
+
+
+#bookmarksSection:has(#bookmarksContainer.hover-hide-mode):not(:hover)::after {
+    opacity: 0.7; /* Make the indicator visible */
+    cursor: pointer;
+	transition-delay: 2s;
+}
+
+#bookmarksContainer {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 90px);
+    gap: 20px;
+    justify-content: center;
+    width: inherit;
+    margin: 20px auto 0 auto;
+    padding: 15px 0;
+    /* Keep the border for the expanded state */
+    max-height: 1000px;
+    transition: max-height 0.5s ease-in-out, opacity 0.3s ease, transform 0.3s ease; /* Added opacity/transform */
+}
+
+/* Hover hide mode styles */
+#bookmarksContainer.hover-hide-mode {
+    max-height: 0px;
+    overflow: hidden;
+    opacity: 0; /* Fade out completely */
+    transform-origin: center top;
+    padding-top: 15px; /* Collapse padding */
+    padding-bottom: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    transform: scale(0.4);
+    transition: max-height 1.2s cubic-bezier(0.2, 0.8, 0.2, 1),
+                opacity 0.1s ease-out, /* Faster fade out */
+                transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1),
+                padding 0.5s ease, margin 0.5s ease;
+	transition-delay: 2s;
+}
+
+/* Styles when hovering the section (triggering expansion) */
+#bookmarksSection:hover #bookmarksContainer.hover-hide-mode {
+    max-height: 1000px;
+    opacity: 1;
+    transform: translateY(0);
+    /* Restore padding/margin */
+    padding: 15px 0;
+    margin: auto;
+    transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+                opacity 0.4s ease-in 0.1s, /* Slight delay on fade in */
+                transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+                padding 0.4s ease, margin 0.4s ease, border 0s linear; /* Restore border immediately */
+}
+
+.bookmark-tile {
+    position: relative;
+    border-radius: 12px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    height: 70px;
+    width: 70px;
+    border: var(--border);
+    background-color: var(--item-background-color);
+    -webkit-backdrop-filter: var(--background-filter);
+    backdrop-filter: var(--background-filter);
+    margin: 5px auto;
+}
+
+#addBookmarkBtn {
+    color: #FFF;
+    border: none;
+    border-radius: 12px;
+    padding: 10px;
+    width: 90px;
+    height: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 50px;
+    border: var(--border);
+    background-color: var(--item-background-color);
+    -webkit-backdrop-filter: var(--background-filter);
+    backdrop-filter: var(--background-filter);
+    margin: 5px auto;
+}
+
+.bookmark-tile:hover, #addBookmarkBtn:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
+}
+
+#addBookmarkBtn::before {
+    content: "+";
+    padding-bottom: 10px;
+}
+
+.bookmark-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.bookmark-favicon {
+    width: 36px;
+    height: 36px;
+    margin: 8px;
+    border-radius: 8px;
+    filter: drop-shadow(0px 0px 3px rgba(255, 255, 255, 0.5));
+}
+
+.bookmark-title {
+    color: #fff;
+    font-size: 12px;
+    text-align: center;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.bookmark-delete {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 22px;
+    height: 22px;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    z-index: 2;
+}
+
+.bookmark-tile:hover .bookmark-delete {
+    opacity: 1;
+}
+
+.empty-bookmarks {
+    grid-column: 1 / -1;
+    text-align: center;
+    color: #999;
+    padding: 20px;
+    font-size: 14px;
+}
+
+/* Bookmark Modal Styles */
+#bookmarkModal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+#bookmarkModalContent {
+    background-color: #121212;
+    border-radius: 10px;
+    padding: 20px;
+    width: 400px;
+    max-width: 90%;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+#bookmarkModalContent h3 {
+    color: #1DB954;
+    margin-top: 0;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #333;
+    padding-bottom: 10px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: #ccc;
+    font-size: 14px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    background-color: #242424;
+    border: 1px solid #333;
+    color: #fff;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 14px;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: #1DB954;
+}
+
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.form-actions button {
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+#cancelAddBookmark {
+    background-color: transparent;
+    color: #ccc;
+    border: 1px solid #333;
+}
+
+#cancelAddBookmark:hover {
+    background-color: #333;
+}
+
+#saveBookmark {
+    background-color: #1DB954;
+    color: white;
+    border: none;
+}
+
+#saveBookmark:hover {
+    background-color: #1ed760;
+    transform: scale(1.05);
+}
+
+/* Drag and Drop styling */
+.bookmark-tile.dragging {
+    opacity: 0.5;
+    transform: scale(1.05);
+    z-index: 10;
+}
+
+.bookmark-tile.drag-over {
+    border: 2px dashed #1DB954;
+    background-color: rgba(29, 185, 84, 0.1);
+}

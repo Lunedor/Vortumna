@@ -1,0 +1,115 @@
+#googleSearch {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin: 10px auto;
+    position: relative;
+    z-index: 1;
+    max-width: 450px;
+    border-bottom: var(--border-bottom);
+    border-image-source: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.3), transparent);
+    border-image-slice: 1;
+}
+
+#geminiInput, #openrouterInput, #googleSearch input[type="text"] {
+    width: 370px;
+    height: 20px;
+    padding: 10px 20px;
+    padding-right: 40px;
+    font-size: 16px;
+    outline: none;
+    border: var(--border);
+    border-radius: 30px;
+    -webkit-backdrop-filter: var(--background-filter);
+    backdrop-filter: var(--background-filter);
+    transition: all 0.3s ease;
+    resize: none;
+}
+
+#googleSearch input[type="text"] {
+    background-color: var(--item-background-color);
+    color: rgba(255, 255, 255, 0.7);
+    box-shadow: var(--box-shadow);
+}
+
+/* Autocomplete dropdown styles */
+#autocompleteResults {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    max-height: 200px;
+    overflow-y: auto;
+    background-color: var(--background-color);
+    border: var(--border);
+    border-radius: 8px;
+    margin-top: 5px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    z-index: 10;
+    display: none;
+    text-align: left;
+    font-size: 14px;
+}
+
+#autocompleteResults.active {
+    display: block;
+}
+
+.autocomplete-item {
+    padding: 10px 15px;
+    cursor: pointer;
+    color: rgba(255, 255, 255, 0.8);
+    transition: background-color 0.2s ease;
+}
+
+.autocomplete-item:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.autocomplete-item.selected {
+    background-color: rgba(255, 255, 255, 0.15);
+}
+
+#googleSearch input[type="text"]::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+    transition: color 0.3s ease;
+}
+
+#googleSearch input[type="text"]:focus {
+    background-color: rgba(255, 255, 255, 1);
+    color: black;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+}
+
+#googleSearch input[type="text"]:focus::placeholder {
+    color: rgba(0, 0, 0, 0.7);
+}
+
+.search-icon {
+    position: absolute;
+    right: 15px;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 16px;
+    transform: scale(-1, 1);
+    transition: color 0.3s ease;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.search-icon:hover {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+#googleSearch input[type="text"]:focus + .search-icon {
+    color: rgba(0, 0, 0, 0.7);
+}
+
+#googleSearch input[type="text"]:focus + .search-icon:hover {
+    color: rgba(0, 0, 0, 1);
+}

@@ -1,0 +1,46 @@
+[{
+    "id": 1,
+    "priority": 1,
+    "action": {
+      "type": "modifyHeaders",
+      "responseHeaders": [
+        { "header": "Access-Control-Allow-Origin", "operation": "set", "value": "*" },
+        { "header": "Access-Control-Allow-Methods", "operation": "set", "value": "GET, HEAD" }
+      ]
+    },
+    "condition": {
+      "urlFilter": "||redd.it",
+      "resourceTypes": ["xmlhttprequest", "image"]
+    }
+  },
+  {
+    "id": 2,
+    "priority": 1,
+    "action": {
+      "type": "modifyHeaders",
+      "responseHeaders": [
+        { "header": "Access-Control-Allow-Origin", "operation": "set", "value": "*" },
+        { "header": "Access-Control-Allow-Headers", "operation": "set", "value": "*" }
+      ]
+    },
+    "condition": {
+      "urlFilter": "||www.google.com/s2/favicons*",
+      "resourceTypes": ["xmlhttprequest", "image"]
+    }
+  },
+  {
+    "id": 3,
+    "priority": 1,
+    "action": {
+      "type": "modifyHeaders",
+      "responseHeaders": [
+        { "header": "Access-Control-Allow-Origin", "operation": "set", "value": "*" },
+        { "header": "Access-Control-Allow-Headers", "operation": "set", "value": "*" }
+      ]
+    },
+    "condition": {
+      "urlFilter": "||logo.clearbit.com/*",
+      "resourceTypes": ["xmlhttprequest", "image"]
+    }
+  }
+]

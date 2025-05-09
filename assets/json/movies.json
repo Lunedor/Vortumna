@@ -1,0 +1,497 @@
+[
+  {
+    "quote": "Life’s simple. You make choices and you don’t look back",
+    "movie_title": "The Fast and The Furious: Tokyo Drift",
+    "actor_name": "Han Lue",
+    "poster_url": "https://image.tmdb.org/t/p/w185/46xqGOwHbh2TH2avWSw3SMXph4E.jpg"
+  },
+  {
+    "quote": "Life’s simple. You make choices and you don’t look back",
+    "movie_title": "The Fast and The Furious: Tokyo Drift",
+    "actor_name": "Han Lue",
+    "poster_url": "https://image.tmdb.org/t/p/w185/46xqGOwHbh2TH2avWSw3SMXph4E.jpg"
+  },
+  {
+    "quote": "Hasta la vista, baby.",
+    "movie_title": "Terminator 2: Judgment Day",
+    "actor_name": "Arnold Schwarzenegger (The Terminator)",
+    "poster_url": "https://image.tmdb.org/t/p/w185/5M0j0B18abtBI5gi2RhfjjurTqb.jpg"
+  },
+  {
+    "quote": "I see you.",
+    "movie_title": "Avatar",
+    "actor_name": "Sam Worthington (Jake Sully)",
+    "poster_url": "https://image.tmdb.org/t/p/w185/kyeqWdyUXW608qlYkRqosgbbJyK.jpg"
+  },
+  {
+    "quote": "Love means never having to say you're sorry.",
+    "movie_title": "Love Story",
+    "actor_name": "Ryan O'Neal (Oliver Barrett IV)",
+    "poster_url": "https://image.tmdb.org/t/p/w185/5A7SGcT1GlhWfHsCRQQtGe0TpJB.jpg"
+  },
+  {
+    "quote": "You had me at 'Hello.'",
+    "movie_title": "Jerry Maguire",
+    "actor_name": "Renée Zellweger (Dorothy Boyd)",
+    "poster_url": "https://image.tmdb.org/t/p/w185/lABvGN7fDk5ifnwZoxij6G96t2w.jpg"
+  },
+  {
+    "quote": "I'm the king of the world!",
+    "movie_title": "Titanic",
+    "actor_name": "Leonardo DiCaprio (Jack Dawson)",
+    "poster_url": "https://image.tmdb.org/t/p/w185/9xjZS2rlVxm8SFx8kPC3aIGCOYQ.jpg"
+  },
+  {
+    "quote": "I'm not a smart man, but I know what love is.",
+    "movie_title": "Forrest Gump",
+    "actor_name": "Tom Hanks (Forrest Gump)",
+    "poster_url": "https://image.tmdb.org/t/p/w185/arw2vcBveWOVZr6pxd9XTd1TdQa.jpg"
+  },
+  {
+    "quote": "It's not who I am underneath, but what I do that defines me.",
+    "movie_title": "Batman Begins",
+    "actor_name": "Christian Bale (Bruce Wayne/Batman)",
+    "poster_url": "https://image.tmdb.org/t/p/w185/4MpN4kIEqUjW8OPtOQJXlTdHiJV.jpg"
+  },
+  {
+    "quote": "I am vengeance. I am the night. I am Batman.",
+    "movie_title": "Batman: The Animated Series (TV Series)",
+    "actor_name": "Kevin Conroy (Voice of Batman)",
+    "poster_url": "https://image.tmdb.org/t/p/w185/lBomQFW1vlm1yUYMNSbFZ45R4Ox.jpg"
+  },
+  {
+    "quote": "Wax on, wax off.",
+    "movie_title": "The Karate Kid",
+    "actor_name": "Pat Morita (Mr. Miyagi)",
+    "poster_url": "https://image.tmdb.org/t/p/w185/1mp4ViklKvA0WXXsNvNx0RBuiit.jpg"
+  },
+  {
+    "quote": "Nobody puts Baby in a corner.",
+    "movie_title": "Dirty Dancing",
+    "actor_name": "Patrick Swayze (Johnny Castle)",
+    "poster_url": "https://image.tmdb.org/t/p/w185/9Jw6jys7q9gjzVX5zm1z0gC8gY9.jpg"
+  },
+  {
+    "quote": "To the infinity and beyond!",
+    "movie_title": "Toy Story 3",
+    "actor_name": "Tim Allen (Buzz Lightyear)",
+    "poster_url": "https://image.tmdb.org/t/p/w185/AbbXspMOwdvwWZgVN0nabZq03Ec.jpg"
+  },
+  {
+    "quote": "I'll get you, my pretty, and your little dog too!",
+    "movie_title": "The Wizard of Oz",
+    "actor_name": "Margaret Hamilton (The Wicked Witch of the West)",
+    "poster_url": "https://image.tmdb.org/t/p/w185/pfAZFD7I2hxW9HCChTuAzsdE6UX.jpg"
+  },
+  {
+    "quote": "I could dance with you till the cows come home... on second thought, I'd rather dance with the cows till you come home.",
+    "movie_title": "Duck Soup",
+    "actor_name": "Groucho Marx (Rufus T. Firefly)",
+    "poster_url": "https://image.tmdb.org/t/p/w185/31t63plEGKHhYuuCpC9bFWO9SBS.jpg"
+  },
+  {
+    "quote": "We're gonna need a bigger boat.",
+    "movie_title": "Jaws",
+    "actor_name": "Roy Scheider (Chief Martin Brody)",
+    "poster_url": "https://image.tmdb.org/t/p/w185/lxM6kqilAdpdhqUl2biYp5frUxE.jpg"
+  },
+  {
+    "quote": "I don't want to survive. I want to live.",
+    "movie_title": "12 Years a Slave",
+    "actor_name": "Chiwetel Ejiofor (Solomon Northup)",
+    "poster_url": "https://image.tmdb.org/t/p/w185/xdANQijuNrJaw1HA61rDccME4Tm.jpg"
+  },
+  {
+    "quote": "Life is a banquet, and most poor suckers are starving to death.",
+    "movie_title": "Auntie Mame",
+    "actor_name": "Rosalind Russell (Auntie Mame Dennis)",
+    "poster_url": "https://image.tmdb.org/t/p/w185/uH810rwkYEbUaV6IlwTaAExbXUm.jpg"
+  },
+  {
+    "quote": "I'm walking here!",
+    "movie_title": "Midnight Cowboy",
+    "actor_name": "Dustin Hoffman (Ratso Rizzo)",
+    "poster_url": "https://image.tmdb.org/t/p/w185/f7YLzOxwWzeEdo7RhAlPSBTYa8.jpg"
+  },
+  {
+    "quote": "I am serious. And don't call me Shirley.",
+    "movie_title": "Airplane!",
+    "actor_name": "Leslie Nielsen (Dr. Rumack)",
+    "poster_url": "https://image.tmdb.org/t/p/w185/7Q3efxd3AF1vQjlSxnlerSA7RzN.jpg"
+  },
+  {
+    "quote": "It's alive! It's alive!",
+    "movie_title": "Frankenstein",
+    "actor_name": "Colin Clive (Dr. Henry Frankenstein)",
+    "poster_url": "https://image.tmdb.org/t/p/w185/mu6wHwH0IwCCaEYtpqujuPJYat1.jpg"
+  },
+  {
+    "quote": "This is the start of a beautiful friendship.",
+    "movie_title": "Casablanca",
+    "actor_name": "Humphrey Bogart (Rick Blaine)",
+    "poster_url": "https://image.tmdb.org/t/p/w185/5K7cOHoay2mZusSLezBOY0Qxh8a.jpg"
+  },
+  {
+    "quote": "Go ahead, make my day.",
+    "movie_title": "Sudden Impact",
+    "actor_name": "Clint Eastwood (Harry Callahan)",
+    "poster_url": "https://image.tmdb.org/t/p/w185/fSADY0EEM7ntpK5IwumcGS4UNNE.jpg"
+  },
+  {
+    "quote": "A martini. Shaken, not stirred.",
+    "movie_title": "James Bond franchise",
+    "actor_name": "Sean Connery, Roger Moore, various (James Bond)",
+    "poster_url": "",
+    "tmdb_match": false
+  },
+  {
+    "quote": "Houston, we have a problem.",
+    "movie_title": "Apollo 13",
+    "actor_name": "Tom Hanks (Jim Lovell)",
+    "poster_url": "https://image.tmdb.org/t/p/w185/oYUZHYMwNKnE1ef4WE5Hw2a9OAY.jpg"
+  },
+  {
+    "quote": "If you build it, he will come.",
+    "movie_title": "Field of Dreams",
+    "actor_name": "Kevin Costner (Ray Kinsella)",
+    "poster_url": "https://image.tmdb.org/t/p/w185/vL7F8T9B6r4Uztpe1Hw4o63I1m1.jpg"
+  },
+  {
+    "quote": "I am Groot.",
+    "movie_title": "Guardians of the Galaxy",
+    "actor_name": "Vin Diesel (Voice of Groot)",
+    "poster_url": "https://image.tmdb.org/t/p/w185/jPrJPZKJVhvyJ4DmUTrDgmFN0yG.jpg"
+  },
+  {
+    "quote": "To be or not to be, that is the question.",
+    "movie_title": "Various adaptations of 'Hamlet'",
+    "actor_name": "Various (Hamlet)",
+    "poster_url": "",
+    "tmdb_match": false
+  },
+  {
+    "quote": "I love the smell of napalm in the morning.",
+    "movie_title": "Apocalypse Now",
+    "actor_name": "Robert Duvall (Lt. Col. Kilgore)",
+    "poster_url": "https://image.tmdb.org/t/p/w185/gQB8Y5RCMkv2zwzFHbUJX3kAhvA.jpg"
+  },
+  {
+    "quote": "What we've got here is a failure to communicate.",
+    "movie_title": "Cool Hand Luke",
+    "actor_name": "Strother Martin (Captain)",
+    "poster_url": "https://image.tmdb.org/t/p/w185/4ykzTiHKLamh3eZJ8orVICtU2Jp.jpg"
+  },
+  {
+    "quote": "They may take our lives, but they'll never take our freedom!",
+    "movie_title": "Braveheart",
+    "actor_name": "Mel Gibson (William Wallace)",
+    "poster_url": "https://image.tmdb.org/t/p/w185/or1gBugydmjToAEq7OZY0owwFk.jpg"
+  },
+  {
+    "quote": "I'm gonna make him an offer he can't refuse.",
+    "movie_title": "The Godfather",
+    "actor_name": "Marlon Brando (Don Vito Corleone)",
+    "poster_url": "https://image.tmdb.org/t/p/w185/3bhkrj58Vtu7enYsRolD1fZdja1.jpg"
+  },
+  {
+    "quote": "Here's Johnny!",
+    "movie_title": "The Shining",
+    "actor_name": "Jack Nicholson (Jack Torrance)",
+    "poster_url": "https://image.tmdb.org/t/p/w185/xazWoLealQwEgqZ89MLZklLZD3k.jpg"
+  },
+  {
+    "quote": "I'm king of the world!",
+    "movie_title": "Titanic",
+    "actor_name": "Leonardo DiCaprio (Jack Dawson)",
+    "poster_url": "https://image.tmdb.org/t/p/w185/9xjZS2rlVxm8SFx8kPC3aIGCOYQ.jpg"
+  },
+  {
+    "quote": "I'm not a smart man, but I know what love is.",
+    "movie_title": "Forrest Gump",
+    "actor_name": "Tom Hanks (Forrest Gump)",
+    "poster_url": "https://image.tmdb.org/t/p/w185/arw2vcBveWOVZr6pxd9XTd1TdQa.jpg"
+  },
+  {
+    "quote": "It's not who I am underneath, but what I do that defines me.",
+    "movie_title": "Batman Begins",
+    "actor_name": "Christian Bale (Bruce Wayne/Batman)",
+    "poster_url": "https://image.tmdb.org/t/p/w185/4MpN4kIEqUjW8OPtOQJXlTdHiJV.jpg"
+  },
+  {
+    "quote": "I am vengeance. I am the night. I am Batman.",
+    "movie_title": "Batman: The Animated Series (TV Series)",
+    "actor_name": "Kevin Conroy (Voice of Batman)",
+    "poster_url": "https://image.tmdb.org/t/p/w185/lBomQFW1vlm1yUYMNSbFZ45R4Ox.jpg"
+  },
+  {
+    "quote": "Wax on, wax off.",
+    "movie_title": "The Karate Kid",
+    "actor_name": "Pat Morita (Mr. Miyagi)",
+    "poster_url": "https://image.tmdb.org/t/p/w185/1mp4ViklKvA0WXXsNvNx0RBuiit.jpg"
+  },
+  {
+    "quote": "Nobody puts Baby in a corner.",
+    "movie_title": "Dirty Dancing",
+    "actor_name": "Patrick Swayze (Johnny Castle)",
+    "poster_url": "https://image.tmdb.org/t/p/w185/9Jw6jys7q9gjzVX5zm1z0gC8gY9.jpg"
+  },
+  {
+    "quote": "To the infinity and beyond!",
+    "movie_title": "Toy Story 3",
+    "actor_name": "Tim Allen (Buzz Lightyear)",
+    "poster_url": "https://image.tmdb.org/t/p/w185/AbbXspMOwdvwWZgVN0nabZq03Ec.jpg"
+  },
+  {
+    "quote": "I'll get you, my pretty, and your little dog too!",
+    "movie_title": "The Wizard of Oz",
+    "actor_name": "Margaret Hamilton (The Wicked Witch of the West)",
+    "poster_url": "https://image.tmdb.org/t/p/w185/pfAZFD7I2hxW9HCChTuAzsdE6UX.jpg"
+  },
+  {
+    "quote": "May the Force be with you.",
+    "movie_title": "Star Wars",
+    "actor_name": "Various (Various Characters)",
+    "poster_url": "https://image.tmdb.org/t/p/w185/6FfCtAuVAW8XJjZ7eWeLibRLWTw.jpg"
+  },
+  {
+    "quote": "There's no place like home.",
+    "movie_title": "The Wizard of Oz",
+    "actor_name": "Judy Garland (Dorothy)",
+    "poster_url": "https://image.tmdb.org/t/p/w185/pfAZFD7I2hxW9HCChTuAzsdE6UX.jpg"
+  },
+  {
+    "quote": "Here's looking at you, kid.",
+    "movie_title": "Casablanca",
+    "actor_name": "Humphrey Bogart (Rick Blaine)",
+    "poster_url": "https://image.tmdb.org/t/p/w185/5K7cOHoay2mZusSLezBOY0Qxh8a.jpg"
+  },
+  {
+    "quote": "You can't handle the truth!",
+    "movie_title": "A Few Good Men",
+    "actor_name": "Jack Nicholson (Colonel Nathan R. Jessep)",
+    "poster_url": "https://image.tmdb.org/t/p/w185/rLOk4z9zL1tTukIYV56P94aZXKk.jpg"
+  },
+  {
+    "quote": "To infinity and beyond!",
+    "movie_title": "Toy Story",
+    "actor_name": "Tim Allen (Buzz Lightyear)",
+    "poster_url": "https://image.tmdb.org/t/p/w185/uXDfjJbdP4ijW5hWSBrPrlKpxab.jpg"
+  },
+  {
+    "quote": "May the odds be ever in your favor.",
+    "movie_title": "The Hunger Games",
+    "actor_name": "Various (Various Characters)",
+    "poster_url": "https://image.tmdb.org/t/p/w185/yXCbOiVDCxO71zI7cuwBRXdftq8.jpg"
+  },
+  {
+    "quote": "You is kind. You is smart. You is important.",
+    "movie_title": "The Help",
+    "actor_name": "Viola Davis (Aibileen Clark)",
+    "poster_url": "https://image.tmdb.org/t/p/w185/3kmfoWWEc9Vtyuaf9v5VipRgdjx.jpg"
+  },
+  {
+    "quote": "Keep your friends close, but your enemies closer.",
+    "movie_title": "The Godfather Part II",
+    "actor_name": "Al Pacino (Michael Corleone)",
+    "poster_url": "https://image.tmdb.org/t/p/w185/hek3koDUyRQk7FIhPXsa6mT2Zc3.jpg"
+  },
+  {
+    "quote": "I see dead people.",
+    "movie_title": "The Sixth Sense",
+    "actor_name": "Haley Joel Osment (Cole Sear)",
+    "poster_url": "https://image.tmdb.org/t/p/w185/vOyfUXNFSnaTk7Vk5AjpsKTUWsu.jpg"
+  },
+  {
+    "quote": "This is the beginning of a beautiful friendship.",
+    "movie_title": "Casablanca",
+    "actor_name": "Humphrey Bogart (Rick Blaine)",
+    "poster_url": "https://image.tmdb.org/t/p/w185/5K7cOHoay2mZusSLezBOY0Qxh8a.jpg"
+  },
+  {
+    "quote": "I can't carry it for you, but I can carry you.",
+    "movie_title": "The Lord of the Rings: The Return of the King",
+    "actor_name": "Sean Astin (Samwise Gamgee)",
+    "poster_url": "https://image.tmdb.org/t/p/w185/rCzpDGLbOoPwLjy3OAm5NUPOTrC.jpg"
+  },
+  {
+    "quote": "I feel the need - the need for speed.",
+    "movie_title": "Top Gun",
+    "actor_name": "Tom Cruise (Maverick)",
+    "poster_url": "https://image.tmdb.org/t/p/w185/xUuHj3CgmZQ9P2cMaqQs4J0d4Zc.jpg"
+  },
+  {
+    "quote": "There's no crying in baseball!",
+    "movie_title": "A League of Their Own",
+    "actor_name": "Tom Hanks (Jimmy Dugan)",
+    "poster_url": "https://image.tmdb.org/t/p/w185/7xpFXAOjgzFPE3vyVerFGfrXhFK.jpg"
+  },
+  {
+    "quote": "You talking to me?",
+    "movie_title": "Taxi Driver",
+    "actor_name": "Robert De Niro (Travis Bickle)",
+    "poster_url": "https://image.tmdb.org/t/p/w185/ekstpH614fwDX8DUln1a2Opz0N8.jpg"
+  },
+  {
+    "quote": "I'll be back.",
+    "movie_title": "The Terminator",
+    "actor_name": "Arnold Schwarzenegger (The Terminator)",
+    "poster_url": "https://image.tmdb.org/t/p/w185/hzXSE66v6KthZ8nPoLZmsi2G05j.jpg"
+  },
+  {
+    "quote": "Life is like a box of chocolates; you never know what you're gonna get.",
+    "movie_title": "Forrest Gump",
+    "actor_name": "Tom Hanks (Forrest Gump)",
+    "poster_url": "https://image.tmdb.org/t/p/w185/arw2vcBveWOVZr6pxd9XTd1TdQa.jpg"
+  },
+  {
+    "quote": "I am the danger. A guy opens his door and gets shot, and you think that of me? No. I am the one who knocks!",
+    "movie_title": "Breaking Bad (TV Series)",
+    "actor_name": "Bryan Cranston (Walter White)",
+    "poster_url": "https://image.tmdb.org/t/p/w185/ineLOBPG8AZsluYwnkMpHRyu7L.jpg"
+  },
+  {
+    "quote": "Winter is coming.",
+    "movie_title": "Game of Thrones (TV Series)",
+    "actor_name": "Sean Bean (Eddard Stark)",
+    "poster_url": "https://image.tmdb.org/t/p/w185/1XS1oqL89opfnbLl8WnZY1O1uJx.jpg"
+  },
+  {
+    "quote": "I am not a hero. I am a high-functioning sociopath.",
+    "movie_title": "Sherlock (TV Series)",
+    "actor_name": "Benedict Cumberbatch (Sherlock Holmes)",
+    "poster_url": "https://image.tmdb.org/t/p/w185/cIfGAkpvWD2zxHrXzhv3uptYbyV.jpg"
+  },
+  {
+    "quote": "I have nothing to prove to you.",
+    "movie_title": "Captain Marvel",
+    "actor_name": "Brie Larson (Carol Danvers/Captain Marvel)",
+    "poster_url": "https://image.tmdb.org/t/p/w185/AtsgWhDnHTq68L0lLsUrCnM7TjG.jpg"
+  },
+  {
+    "quote": "Why so serious?",
+    "movie_title": "The Dark Knight",
+    "actor_name": "Heath Ledger (The Joker)",
+    "poster_url": "https://image.tmdb.org/t/p/w185/qJ2tW6WMUDux911r6m7haRef0WH.jpg"
+  },
+  {
+    "quote": "I am vengeance. I am the night. I am Batman.",
+    "movie_title": "Batman: The Animated Series (TV Series)",
+    "actor_name": "Kevin Conroy (Voice of Batman)",
+    "poster_url": "https://image.tmdb.org/t/p/w185/lBomQFW1vlm1yUYMNSbFZ45R4Ox.jpg"
+  },
+  {
+    "quote": "I'll be there for you.",
+    "movie_title": "Friends (TV Series)",
+    "actor_name": "The Rembrandts (Theme Song)",
+    "poster_url": "https://image.tmdb.org/t/p/w185/2koX1xLkpTQM4IZebYvKysFW1Nh.jpg"
+  },
+  {
+    "quote": "We are all stories in the end. Just make it a good one, eh?",
+    "movie_title": "Doctor Who (TV Series)",
+    "actor_name": "Matt Smith (The Doctor)",
+    "poster_url": "https://image.tmdb.org/t/p/w185/4edFyasCrkH4MKs6H4mHqlrxA6b.jpg"
+  },
+  {
+    "quote": "I have nothing to lose.",
+    "movie_title": "Breaking Bad (TV Series)",
+    "actor_name": "Bryan Cranston (Walter White)",
+    "poster_url": "https://image.tmdb.org/t/p/w185/ineLOBPG8AZsluYwnkMpHRyu7L.jpg"
+  },
+  {
+    "quote": "Winter is coming.",
+    "movie_title": "Game of Thrones (TV Series)",
+    "actor_name": "Sean Bean (Eddard Stark)",
+    "poster_url": "https://image.tmdb.org/t/p/w185/1XS1oqL89opfnbLl8WnZY1O1uJx.jpg"
+  },
+  {
+    "quote": "I am not a hero. I am a high-functioning sociopath.",
+    "movie_title": "Sherlock (TV Series)",
+    "actor_name": "Benedict Cumberbatch (Sherlock Holmes)",
+    "poster_url": "https://image.tmdb.org/t/p/w185/cIfGAkpvWD2zxHrXzhv3uptYbyV.jpg"
+  },
+  {
+    "quote": "I have nothing to prove to you.",
+    "movie_title": "Captain Marvel",
+    "actor_name": "Brie Larson (Carol Danvers/Captain Marvel)",
+    "poster_url": "https://image.tmdb.org/t/p/w185/AtsgWhDnHTq68L0lLsUrCnM7TjG.jpg"
+  },
+  {
+    "quote": "Why so serious?",
+    "movie_title": "The Dark Knight",
+    "actor_name": "Heath Ledger (The Joker)",
+    "poster_url": "https://image.tmdb.org/t/p/w185/qJ2tW6WMUDux911r6m7haRef0WH.jpg"
+  },
+  {
+    "quote": "I am vengeance. I am the night. I am Batman.",
+    "movie_title": "Batman: The Animated Series (TV Series)",
+    "actor_name": "Kevin Conroy (Voice of Batman)",
+    "poster_url": "https://image.tmdb.org/t/p/w185/lBomQFW1vlm1yUYMNSbFZ45R4Ox.jpg"
+  },
+  {
+    "quote": "I'll be there for you.",
+    "movie_title": "Friends (TV Series)",
+    "actor_name": "The Rembrandts (Theme Song)",
+    "poster_url": "https://image.tmdb.org/t/p/w185/2koX1xLkpTQM4IZebYvKysFW1Nh.jpg"
+  },
+  {
+    "quote": "I am Groot.",
+    "movie_title": "Guardians of the Galaxy",
+    "actor_name": "Vin Diesel (Voice of Groot)",
+    "poster_url": "https://image.tmdb.org/t/p/w185/jPrJPZKJVhvyJ4DmUTrDgmFN0yG.jpg"
+  },
+  {
+    "quote": "To be or not to be, that is the question.",
+    "movie_title": "Various adaptations of 'Hamlet'",
+    "actor_name": "Various (Hamlet)",
+    "poster_url": "",
+    "tmdb_match": false
+  },
+  {
+    "quote": "I love the smell of napalm in the morning.",
+    "movie_title": "Apocalypse Now",
+    "actor_name": "Robert Duvall (Lt. Col. Kilgore)",
+    "poster_url": "https://image.tmdb.org/t/p/w185/gQB8Y5RCMkv2zwzFHbUJX3kAhvA.jpg"
+  },
+  {
+    "quote": "What we've got here is a failure to communicate.",
+    "movie_title": "Cool Hand Luke",
+    "actor_name": "Strother Martin (Captain)",
+    "poster_url": "https://image.tmdb.org/t/p/w185/4ykzTiHKLamh3eZJ8orVICtU2Jp.jpg"
+  },
+  {
+    "quote": "They may take our lives, but they'll never take our freedom!",
+    "movie_title": "Braveheart",
+    "actor_name": "Mel Gibson (William Wallace)",
+    "poster_url": "https://image.tmdb.org/t/p/w185/or1gBugydmjToAEq7OZY0owwFk.jpg"
+  },
+  {
+    "quote": "I am the one who knocks.",
+    "movie_title": "Breaking Bad (TV Series)",
+    "actor_name": "Bryan Cranston (Walter White)",
+    "poster_url": "https://image.tmdb.org/t/p/w185/ineLOBPG8AZsluYwnkMpHRyu7L.jpg"
+  },
+  {
+    "quote": "Winter is coming.",
+    "movie_title": "Game of Thrones (TV Series)",
+    "actor_name": "Sean Bean (Eddard Stark)",
+    "poster_url": "https://image.tmdb.org/t/p/w185/1XS1oqL89opfnbLl8WnZY1O1uJx.jpg"
+  },
+  {
+    "quote": "I am not a number; I am a free man!",
+    "movie_title": "The Prisoner (TV Series)",
+    "actor_name": "Patrick McGoohan (Number Six)",
+    "poster_url": "https://image.tmdb.org/t/p/w185/1FtqAlj6jsBk25PKwL2NrgzdFSo.jpg"
+  },
+  {
+    "quote": "In my culture, death is not the end.",
+    "movie_title": "Star Trek: The Next Generation (TV Series)",
+    "actor_name": "Michael Dorn (Worf)",
+    "poster_url": "https://image.tmdb.org/t/p/w185/vkLzXddgUKH5VcpnYiRzpJFrZhz.jpg"
+  },
+  {
+    "quote": "That's what she said.",
+    "movie_title": "The Office (U.S.) (TV Series)",
+    "actor_name": "Steve Carell (Michael Scott)",
+    "poster_url": "https://image.tmdb.org/t/p/w185/dg9e5fPRRId8PoBE0F6jl5y85Eu.jpg"
+  }
+]

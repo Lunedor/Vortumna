@@ -1,0 +1,291 @@
+:root {
+    /* Colors */
+    --item-background-color: rgba(255, 255, 255, 0.1);
+    --border: 1px solid rgba(0, 0, 0, 0.75);
+    --background-filter: blur(2px);
+    --background-color: #171717;
+    --box-shadow: 0 0px 8px rgba(0, 0, 0, 0.3);
+    --border-bottom: none;
+    
+    /* Typography */
+    --font-primary: 'Segoe UI', 'Inter', sans-serif;
+    --font-secondary: 'Inter', 'Segoe UI', sans-serif;
+    --font-accent: 'Open Sans', 'Segoe UI', sans-serif;
+    
+    --font-weight-thin: 200;
+    --font-weight-light: 300;
+    --font-weight-regular: 400;
+    --font-weight-medium: 500;
+}
+
+html {
+    --background-color: #171717;
+}
+
+/* Add loading state to hide elements until settings are loaded */
+body.settings-loading .visibility-managed {
+    visibility: hidden !important;
+}
+
+body {
+    margin: 0;
+    font-family: var(--font-primary);
+    font-weight: var(--font-weight-regular);
+    background-color: var(--background-color);
+    color: var(--text-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    transition: background-color 0.3s, color 0.3s;
+    background-size: cover;
+    background-position: center;
+    padding-top: 20px;
+    overflow-y: auto;
+    font-size: 16px;
+    line-height: 1.5;
+    letter-spacing: 0.2px;
+}
+
+/* Dark Theme */
+body.dark-theme {
+    --background-color: #121212;
+    --text-color: #ffffff;
+}
+
+/* Background container */
+#background-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    overflow: hidden;
+}
+.background-container img  {
+    background-image: cover !important;
+}
+
+.background-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: object-fit 0.3s ease;
+}
+
+.background-image.contain-mode {
+    object-fit: contain;
+    background-color: #000;
+}
+
+.bodyWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin: 0 auto;
+    position: absolute;
+    top: 50%;
+    transition: top 0.5s ease-in-out;
+    z-index: 4;
+    gap: 10px;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(18, 18, 18, 0.6);
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: rgba(83, 83, 83, 0.8);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(127, 127, 127, 0.8);
+}
+
+.location-info {
+    position: relative;
+    padding: 0px;
+    border-radius: 8px;
+    color: white;
+    text-align: right;
+    opacity: 0.8;
+    z-index: 1;
+}
+
+.location-info p {
+    margin: 0;
+    font-size: 12px;
+    filter: drop-shadow(1px 1px 1px black);
+}
+
+.location-info a {
+    color: #ccc;
+    text-decoration: none;
+    font-size: 10px;
+    padding: 2px 0px;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+    display: inline-block;
+    cursor: pointer;
+    filter: drop-shadow(1px 1px 2px black);
+}
+
+.location-info a:hover {
+    transform: scale(1.05);
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* Background loader */
+.background-loader {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 15px 25px;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    border-radius: 10px;
+    font-size: 16px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% { opacity: 0.7; }
+    50% { opacity: 1; }
+    100% { opacity: 0.7; }
+}
+
+hr.solid {
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    filter: drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.5));
+}
+
+.container-button { 
+    border-radius: 50%;
+    width: 42px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: var(--box-shadow);
+    transition: all 0.2s ease;
+    border: var(--border);
+    background-color: var(--item-background-color);
+    -webkit-backdrop-filter: var(--background-filter);
+    backdrop-filter: var(--background-filter);
+}
+
+.container-button:hover {
+    transform: rotate(-360deg);
+}
+
+#settingsBtn:hover{
+    transform: rotate(360deg);
+}
+#notesBtn{
+    color: white;
+    font-size: 26px;
+}
+
+#pomodoroBtn{
+    color: white;
+    font-size: 21px;
+}
+
+.feedback{
+    color: white;
+    font-size: 14px;
+    position: fixed;
+    bottom: 20px;
+    right: auto;
+    padding: 10px 20px;
+    border-radius: 8px;
+    background-color: rgba(25, 135, 84, 0.9);
+}
+
+#fullscreenToggleBtn, .save-image-btn, .refresh-background-btn {
+    display: flex;
+    position: relative;
+    z-index: 15;
+    padding: 2px;
+    margin: auto;
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    width: 0px;
+    opacity: 0;
+    transition: all 0.5s ease;
+}
+
+#fullscreenToggleBtn:hover, .save-image-btn:hover, .refresh-background-btn:hover, .location-info:hover {
+    opacity: 1 !important;
+}
+
+#fullscreenToggleBtn span, .refresh-background-btn span {
+    color: white;
+    font-size: 26px;
+    margin:auto;
+}
+
+.location-buttons-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 15;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.location-buttons-container:hover #fullscreenToggleBtn,
+.location-buttons-container:hover .save-image-btn,
+.location-buttons-container:hover .refresh-background-btn {
+    transition: all 0.5s ease;
+    width: 25px;
+    opacity: 0.3;
+    justify-content: center;
+}
+
+/* Greeting Time Display */
+.greeting-time-display {
+    display: inline-block;
+    margin: 0 5px;
+    font-weight: bold;
+    position: relative;
+    vertical-align: baseline;
+    white-space: nowrap;
+}
+
+#greetingContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    line-height: 1.5;
+}
+
+/* Fade in animation for greeting */
+.fade-in {
+    animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}

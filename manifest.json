@@ -1,0 +1,49 @@
+{
+  "manifest_version": 3,
+  "name": "Vortumna",
+  "description": "Enhance your new tab",
+  "version": "1.0",
+  "permissions": [
+	  "alarms",
+    "storage",
+    "identity",
+    "tabs",
+    "scripting",
+    "declarativeNetRequest"
+  ],  "host_permissions": [
+    "https://accounts.spotify.com/*",
+    "https://api.spotify.com/*",
+    "https://www.reddit.com/*",
+	  "https://i.reddit.com/*",
+    "*://*.redd.it/*",
+    "https://i.redd.it/*",
+	  "https://api.genius.com/*",
+    "https://www.gstatic.com/*",
+    "https://generativelanguage.googleapis.com/*",
+    "https://suggestqueries.google.com/*",
+    "https://api.hamatim.com/quotes/*",
+    "https://open.spotify.com/*",
+    "https://sdk.scdn.co/*",
+    "https://keep.googleapis.com/*"
+  ],
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "declarative_net_request": {
+    "rule_resources": [{
+      "id": "cors_rules",
+      "enabled": true,
+      "path": "rules.json"
+    }]
+  },
+  "action": {
+    "default_icon": "icon.png"
+  },
+  "chrome_url_overrides": {
+    "newtab": "newtab.html"
+  },
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'; img-src 'self' http: https: data: blob:;"
+  }
+}

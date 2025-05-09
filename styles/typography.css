@@ -1,0 +1,132 @@
+/* Typography enhancements for Vortumna - Minimalist Edition */
+
+/* Base styles */
+body {
+    font-family: var(--font-primary);
+    font-weight: var(--font-weight-light);
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-primary);
+    font-weight: var(--font-weight-light);
+    letter-spacing: 0.2px;
+    margin-top: 0;
+}
+
+h1 { font-size: 2rem; }
+h2 { font-size: 1.75rem; }
+h3 { font-size: 1.5rem; }
+h4 { font-size: 1.25rem; line-height: 1.3; }
+
+/* Buttons and interactive elements */
+button, 
+.settings-button,
+.search-icon,
+select,
+input[type="text"],
+input[type="password"],
+textarea {
+    font-family: var(--font-primary);
+    font-weight: var(--font-weight-regular);
+    letter-spacing: 0.1px;
+}
+
+/* Special UI elements */
+#weatherStatus,
+#greetingContainer,
+.quote-text {
+    font-family: var(--font-primary);
+    font-weight: var(--font-weight-light);
+    letter-spacing: 0.2px;
+}
+
+/* Weather specific styling - keeping the original font family for consistency */
+.weather-container {
+    font-family: 'Segoe UI', sans-serif !important;
+    font-weight: var(--font-weight-light);
+}
+
+.weather-container .weather-time {
+    font-size: 4em !important; /* Reduced from 4.5em to prevent overflow */
+    font-weight: var(--font-weight-light);
+    letter-spacing: 2px;
+    height: 85px;;
+}
+
+.weather-container .weather-temp {
+    font-weight: var(--font-weight-light);
+    font-size: 1.6em !important; /* Reduced from 1.8em */
+}
+.weather-date {
+    font-weight: var(--font-weight-light);
+    font-size: 1em !important; /* Reduced from 1.4em */
+}
+.weather-container .weather-city {
+    font-weight: var(--font-weight-light);
+    font-size: 0.8em !important; /* Reduced from 1.4em */
+}
+
+/* Search elements */
+#googleSearchInput {
+    font-family: var(--font-primary);
+    font-weight: var(--font-weight-light);
+    letter-spacing: 0.1px;
+}
+
+/* Settings panel */
+#settingsDropdown {
+    font-family: var(--font-primary);
+    font-weight: var(--font-weight-light);
+}
+
+#settingsDropdown h2 {
+    font-weight: var(--font-weight-regular);
+    letter-spacing: 0.2px;
+}
+
+.settings-section h4 {
+    font-weight: var(--font-weight-regular);
+    letter-spacing: 0.3px;
+    font-size: 0.9rem;
+    text-transform: none;
+}
+
+/* Small text and labels */
+small, 
+label {
+    font-family: var(--font-primary);
+    font-weight: var(--font-weight-light);
+}
+
+/* Quotes section */
+#quote-container {
+    font-family: var(--font-primary);
+}
+
+#quote-text {
+    font-weight: var(--font-weight-light);
+    font-style: normal; /* Removing italic */
+    line-height: 1.5;
+    letter-spacing: 0.1px;
+}
+
+#quote-author {
+    font-weight: var(--font-weight-regular);
+    letter-spacing: 0.2px;
+}
+
+/* AI chat sections */
+.gemini-messages, 
+.openrouter-messages {
+    font-family: var(--font-primary);
+    line-height: 1.5;
+    font-weight: var(--font-weight-light);
+}
+
+/* Bookmarks */
+#bookmarksContainer .bookmark-title {
+    font-family: var(--font-primary);
+    font-weight: var(--font-weight-regular);
+    letter-spacing: 0.1px;
+}

@@ -1,0 +1,536 @@
+#notesModal {
+    position: fixed;
+    top: 20px;
+    right: 70px;
+    z-index: 5;
+    width: 500px;
+    height: 620px;
+    border-radius: 10px;
+    border: var(--border);
+    -webkit-backdrop-filter: var(--background-filter);
+    backdrop-filter: var(--background-filter);
+    display: none; /* Default state is hidden */
+    box-shadow: var(--box-shadow);
+    padding: 0;
+    flex-direction: column;
+    overflow: auto;
+    background-color: var(--item-background-color);
+    border-radius: 10px;
+}
+
+#notesModal.visibility-managed {
+    display: flex; /* Show modal when visible class is added */
+}
+
+#notesModalContent{
+    height: 560px;
+    overflow-y: auto;
+}
+/* Modal header area */
+.notes-modal-header {
+    padding: 15px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333;
+    color: white;
+}
+
+.notes-modal-header h3 {
+    margin: 0;
+    font-size: 21px;
+    color: white;
+}
+
+.close-notes-btn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 22px;
+    cursor: pointer;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.7;
+    transition: opacity 0.2s, transform 0.2s;
+}
+
+.close-notes-btn:hover {
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+/* Basic Reset & Defaults */
+
+.notes-modal-body {
+    background-color: #171717; 
+    color: #e5e7eb; /* text-gray-200 */
+    min-height: 620px;
+    display: flex;
+    align-items: flex-start; /* items-start */
+    justify-content: flex-start; /* Change from center to flex-start */
+    padding: 1rem; /* p-4 */
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; /* Basic font stack */
+}
+
+/* Main Container */
+.main-container {
+    width: 100%;
+    max-width: 42rem; /* max-w-2xl */
+}
+
+/* Header */
+.app-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1.5rem; /* mb-6 */
+}
+
+.app-header h1 {
+    font-size: 1.5rem; /* text-2xl */
+    line-height: 2rem;
+    font-weight: 700; /* font-bold */
+    color: #a5b4fc; /* text-indigo-300 */
+    display: flex;
+    align-items: center;
+}
+
+.app-header h1 i {
+    margin-right: 0.75rem; /* mr-3 */
+}
+
+/* Buttons */
+.button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem 1rem; /* px-4 py-2 */
+    border-radius: 0.5rem; /* rounded-lg */
+    font-size: 0.875rem; /* text-sm */
+    line-height: 1.25rem;
+    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+    border: none;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.button i {
+    margin-right: 0.5rem; /* mr-2 */
+}
+
+.button-primary {
+    background-color: #1DB954; /* bg-indigo-600 */
+    color: #ffffff;
+}
+.button-primary:hover {
+    background-color: #1ed760;
+}
+
+.button-secondary {
+     background-color: #374151; /* bg-gray-700 */
+     color: #d1d5db; /* text-gray-300 */
+}
+.button-secondary:hover {
+     background-color: #4b5563; /* hover:bg-gray-600 */
+     color: #ffffff; /* hover:text-white */
+}
+
+.button-danger-text {
+    color: #d1d5db; /* text-gray-300 */
+    background: none;
+}
+.button-danger-text:hover {
+    color: #f87171; /* hover:text-red-400 */
+}
+
+/* Section Headers */
+.section-header {
+    font-size: 0.75rem; /* text-xs */
+    line-height: 1rem;
+    font-weight: 600; /* font-semibold */
+    color: #9ca3af; /* text-gray-400 */
+    margin: 1rem; /* mb-2 */
+    text-transform: uppercase;
+}
+
+#pinned-header {
+    display: flex;
+    align-items: center;
+}
+
+#pinned-header i {
+    margin-right: 0.5rem; /* mr-2 */
+    color: #facc15; /* text-yellow-400 */
+}
+
+/* Note Grid Layout */
+#pinned-notes, #notes-list {
+    display: grid;
+    grid-template-columns: repeat(1, minmax(0, 1fr)); /* grid-cols-1 */
+    gap: 1rem; /* gap-4 */
+}
+
+@media (min-width: 768px) { /* md breakpoint */
+    #pinned-notes, #notes-list {
+        grid-template-columns: repeat(2, minmax(0, 1fr)); /* md:grid-cols-2 */
+    }
+}
+
+/* --- Note Card Styles --- */
+.note-card {
+    background-color: #333; /* bg-gray-800 */
+    border-radius: 0.75rem; /* rounded-xl */
+    padding: 10px; /* p-5 */
+    cursor: pointer;
+    border: 1px solid #374151; /* border border-gray-700 */
+    display: flex;
+    flex-direction: column;
+    transition: all 0.2s ease;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+}
+.note-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+}
+
+.note-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 0; /* mb-3 */
+}
+
+.note-card-header h3 {
+    font-weight: 500; /* font-medium */
+    color: #f3f4f6; /* text-gray-100 */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap; /* truncate */
+    padding-right: 0.5rem; /* pr-2 */
+    flex-grow: 1;
+    margin: 0;
+}
+
+.note-card-header .fa-thumbtack {
+    color: #facc15; /* text-yellow-400 */
+    margin-left: auto; /* ml-auto */
+    flex-shrink: 0; /* flex-shrink-0 */
+}
+
+.note-card .markdown-preview {
+    /* Specific styles for markdown preview *inside a card* */
+    color: #9ca3af; /* text-gray-400 */
+    font-size: 0.75rem; /* text-sm */
+    line-height: 1rem;
+    margin-bottom: 0.75rem; /* mb-3 */
+    height: 150px; /* max-h-40 */
+    overflow: auto;
+    flex-grow: 1; /* flex-grow */
+}
+
+.note-card-footer {
+    margin-top: auto; /* mt-auto */
+    padding-top: 0.5rem; /* pt-2 */
+}
+
+.note-card-timer {
+    font-size: 0.75rem; /* text-xs */
+    color: #818cf8; /* text-indigo-400 */
+    margin-bottom: 0.5rem; /* mb-2 */
+    display: flex;
+    align-items: center;
+}
+.note-card-timer i {
+    margin-right: 0.25rem; /* mr-1 */
+}
+
+.progress-display {
+    display: flex;
+    align-items: center;
+    font-size: 0.75rem; /* text-xs */
+    color: #6b7280; /* text-gray-500 */
+    margin-top: 0.25rem; /* mt-1 */
+}
+.progress-display .progress-bar-container { /* Renamed class for clarity */
+    flex: 1; /* flex-1 */
+    background-color: #374151; /* bg-gray-700 */
+    border-radius: 9999px; /* rounded-full */
+    margin-right: 0.5rem; /* mr-2 */
+    height: 4px; /* Keep original height */
+}
+.progress-display .progress-bar { /* Inner bar */
+    background-color: #6366f1; /* bg-indigo-500 */
+    height: 100%; /* h-full */
+    border-radius: 9999px; /* rounded-full */
+    /* width set by inline style */
+}
+/* .progress-text requires no extra styles */
+
+/* --- Modal Styles --- */
+.modal-overlay {
+    position: fixed;
+    top: 0; right: 0; bottom: 0; left: 0;
+    background-color: rgba(0, 0, 0, 0.5); /* bg-black bg-opacity-50 */
+    display: flex; /* Now always flex when not hidden */
+    align-items: center;
+    justify-content: center;
+    z-index: 50;
+    /* The 'hidden' class will toggle display: none */
+}
+
+/* Use !important for hidden to ensure it overrides .modal-overlay display:flex */
+.hidden {
+    display: none !important;
+}
+
+#note-editor-modal {
+     padding: 1rem; /* p-4 on the overlay itself */
+}
+
+.modal-content {
+    background-color: #171717; /* bg-gray-800 */
+    border-radius: 0.75rem; /* rounded-xl */
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04); /* shadow-2xl */
+    width: 100%;
+    display: flex; /* Added for inner body */
+    flex-direction: column; /* Added for inner body */
+}
+
+#note-editor-modal .modal-content {
+     max-width: 28rem; /* max-w-md */
+}
+
+#timer-modal .modal-content {
+     padding: 1.5rem; /* p-6 */
+     width: 20rem; /* w-80 */
+     max-width: 20rem; /* Ensure width takes precedence */
+}
+
+.modal-body {
+    padding: 1.25rem; /* p-5 for editor */
+    /* Timer modal has padding directly on .modal-content */
+}
+
+/* Modal Header/Title Row */
+.modal-title-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem; /* mb-4 */
+}
+
+#note-title {
+    background-color: #333; /* bg-gray-700 */
+    color: #ffffff;
+    padding: 0.75rem 1rem; /* px-4 py-3 */
+    border-radius: 0.5rem; /* rounded-lg */
+    width: 100%; /* w-full */
+    font-size: 1.125rem; /* text-lg */
+    line-height: 1.75rem;
+    font-weight: 500; /* font-medium */
+    border: 1px solid transparent;
+    outline: none;
+}
+#note-title:focus {
+    border-color: #6366f1; /* ring-indigo-500 */
+    box-shadow: 0 0 0 2px #6366f1; /* ring-2 */
+}
+
+/* Modal Action Buttons (Pin/Timer in header) */
+.modal-header-actions {
+    display: flex;
+    margin-left: 0.75rem; /* ml-3 */
+}
+.modal-header-actions > * + * {
+    margin-left: 0.5rem; /* space-x-2 */
+}
+
+.modal-action-button {
+    color: #9ca3af; /* text-gray-400 */
+    padding: 0.5rem; /* p-2 */
+    border-radius: 9999px; /* rounded-full */
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    transition: color 0.2s ease, background-color 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+}
+.modal-action-button:hover {
+    background-color: #374151; /* hover:bg-gray-700 */
+}
+#pin-note-btn:hover { color: #facc15; /* hover:text-yellow-400 */ }
+#set-timer-btn:hover { color: #818cf8; /* hover:text-indigo-400 */ }
+/* Style for the pinned state (JS should toggle this class) */
+#pin-note-btn.pinned i {
+     color: #facc15; /* text-yellow-400 */
+     /* Use fas (solid star) via JS */
+}
+#pin-note-btn.pinned:hover i {
+     color: #facc15; /* Keep yellow on hover when pinned */
+}
+
+/* Editor Tabs */
+#editor-tabs {
+    display: flex;
+    border-bottom: 1px solid #374151; /* border-gray-700 */
+    margin-bottom: 1rem; /* mb-4 */
+}
+#editor-tabs button {
+    padding: 0.5rem 1rem; /* px-4 py-2 */
+    font-size: 0.875rem; /* text-sm */
+    font-weight: 500; /* font-medium */
+    color: #9ca3af; /* text-gray-400 */
+    border: none;
+    background: none;
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -1px; /* Overlap container border */
+    transition: color 0.2s ease, border-color 0.2s ease;
+}
+#editor-tabs button:hover {
+    color: #d1d5db; /* hover:text-gray-300 */
+}
+#editor-tabs button.active {
+    color: #818cf8; /* text-indigo-400 */
+    border-bottom-color: #818cf8; /* border-indigo-400 */
+}
+
+/* Preview/Edit Areas */
+#preview-content, #note-content {
+    min-height: 200px;
+    max-height: 300px;
+    width: 100%;
+    border-radius: 0.5rem; /* rounded-lg (add to both) */
+}
+#preview-content {
+    overflow-y: auto;
+    padding: 0.5rem; /* p-2 */
+    /* display controlled by JS adding/removing 'hidden' */
+}
+#note-content {
+    /* display: none; /* hidden */
+    background-color: #333; /* bg-gray-700 */
+    color: #ffffff; /* text-white */
+    padding: 0.75rem 1rem; /* px-4 py-3 */
+    border: 1px solid transparent;
+    resize: none; /* resize-none */
+    outline: none;
+    font-family: SFMono-Regular, Consolas, 'Liberation Mono', Menlo, Courier, monospace;
+    line-height: 1.6;
+    width: 90%; /* w-96;
+    /* display controlled by JS adding/removing 'hidden' */
+}
+#note-content:focus {
+    border-color: #6366f1; /* ring-indigo-500 */
+    box-shadow: 0 0 0 2px #6366f1; /* ring-2 */
+}
+
+/* Timer Display */
+#timer-display {
+    /* display: none; /* hidden */
+    margin-top: 0.75rem; /* mt-3 */
+    font-size: 0.875rem; /* text-sm */
+    color: #818cf8; /* text-indigo-400 */
+    /* display controlled by JS adding/removing 'hidden' */
+}
+#timer-display i {
+    margin-right: 0.5rem; /* mr-2 */
+}
+
+/* Modal Footer */
+.modal-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1.5rem; /* mt-6 */
+}
+.modal-footer-actions {
+    display: flex;
+}
+.modal-footer-actions > * + * {
+    margin-left: 0.75rem; /* space-x-3 */
+}
+
+/* Timer Modal Specifics */
+#timer-modal h3 {
+     font-size: 1.125rem; /* text-lg */
+     line-height: 1.75rem;
+     font-weight: 500; /* font-medium */
+     margin-bottom: 1rem; /* mb-4 */
+     color: #a5b4fc; /* text-indigo-300 */
+ }
+.timer-input-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem; /* mb-4 */
+}
+#timer-minutes {
+     background-color: #374151; /* bg-gray-700 */
+     color: #ffffff;
+     padding: 0.5rem 0.75rem; /* px-3 py-2 */
+     border-radius: 0.5rem; /* rounded-lg */
+     border: 1px solid transparent;
+     outline: none;
+}
+#timer-minutes:focus {
+     border-color: #6366f1; /* ring-indigo-500 */
+     box-shadow: 0 0 0 2px #6366f1; /* ring-2 */
+}
+.timer-input-row span {
+    margin-left: 0.5rem; /* ml-2 */
+    color: #d1d5db; /* text-gray-300 */
+}
+.timer-footer {
+    display: flex;
+    justify-content: flex-end; /* justify-end */
+}
+.timer-footer > * + * {
+    margin-left: 0.75rem; /* space-x-3 */
+}
+
+/* --- Original Styles (Unchanged/Integrated) --- */
+.markdown-preview ul { margin-left: 0; padding-left: 1.5em; margin-bottom: 1em; }
+.markdown-preview ol { margin-left: 0; padding-left: 1.5em; margin-bottom: 1em; }
+.markdown-preview li { margin-bottom: 0.3em; }
+.markdown-preview li > input[type="checkbox"] {
+    -webkit-appearance: none; appearance: none;
+    width: 16px; height: 16px;
+    border: 1px solid #4b5563; border-radius: 3px; outline: none;
+    cursor: pointer; margin-right: 8px; position: relative; top: 3px;
+    transition: all 0.2s ease; flex-shrink: 0;
+}
+.markdown-preview li > input[type="checkbox"]:hover { border-color: #818cf8; }
+.markdown-preview li > input[type="checkbox"]:checked { background-color: #6366f1; border-color: #6366f1; }
+.markdown-preview li > input[type="checkbox"]:checked::after {
+    content: "✓"; color: white; position: absolute; left: 3px; top: -1px; font-size: 12px;
+}
+.markdown-preview ul li:has(> input[type="checkbox"]),
+.markdown-preview ol li:has(> input[type="checkbox"]) {
+    list-style-type: none;
+    margin-left: -1.5em;
+    padding-left: 0.2em;
+}
+.sortable-chosen { opacity: 0.8; transform: scale(1.02); }
+.sortable-drag { opacity: 1; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2); }
+.markdown-preview { line-height: 1.6; text-align: left;}
+.markdown-preview h1, .markdown-preview h2, .markdown-preview h3, .markdown-preview h4, .markdown-preview h5, .markdown-preview h6 { font-weight: 600; margin-top: 1.2em; margin-bottom: 0.6em; line-height: 1.3; color: #e5e7eb; }
+.markdown-preview h1 { font-size: 1.8em; border-bottom: 1px solid #4b5563; padding-bottom: 0.3em;}
+.markdown-preview h2 { font-size: 1.5em; border-bottom: 1px solid #4b5563; padding-bottom: 0.3em;}
+.markdown-preview h3 { font-size: 1.3em; }
+.markdown-preview h4 { font-size: 1.1em; }
+.markdown-preview p { margin-bottom: 1em; }
+.markdown-preview a { color: #818cf8; text-decoration: underline; }
+.markdown-preview a:hover { color: #a5b4fc; }
+.markdown-preview code { background-color: #374151; padding: 0.2em 0.4em; margin: 0; font-size: 85%; border-radius: 3px; font-family: SFMono-Regular, Consolas, 'Liberation Mono', Menlo, Courier, monospace; }
+.markdown-preview pre { background-color: #1f2937; border: 1px solid #374151; padding: 1em; margin-bottom: 1em; overflow: auto; border-radius: 4px; }
+.markdown-preview pre code { background-color: transparent; padding: 0; margin: 0; font-size: inherit; border-radius: 0; }
+.markdown-preview blockquote { border-left: 4px solid #4b5563; padding-left: 1em; margin-left: 0; margin-right: 0; margin-bottom: 1em; color: #9ca3af; }
+.markdown-preview hr { height: .25em; padding: 0; margin: 24px 0; background-color: #4b5563; border: 0; }
+.markdown-preview img { max-width: 100%; height: auto; margin-top: 0.5em; margin-bottom: 0.5em;}

@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="icon.png">
+    <title>New Tab by Vortumna</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@300;400;500&family=Inter:wght@200;300;400;500&family=Open+Sans:wght@300;400;500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles/base.css">
+    <link rel="stylesheet" href="styles/search.css">
+    <link rel="stylesheet" href="styles/weather.css">
+    <link rel="stylesheet" href="styles/settings.css">
+    <link rel="stylesheet" href="styles/bookmarks.css">
+    <link rel="stylesheet" href="styles/gallery.css">
+    <link rel="stylesheet" href="styles/gemini.css">
+    <link rel="stylesheet" href="styles/spotify.css">
+    <link rel="stylesheet" href="styles/quote.css">
+    <link rel="stylesheet" href="styles/notes.css">
+    <link rel="stylesheet" href="styles/typography.css">
+    <!-- Add Marked.js library for Markdown rendering -->
+    <script src="/lib/marked.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/fontawesome.min.css"
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Initialize page - moved to external JS file for CSP compliance -->
+    <script src="/js/utils/utils.js" defer></script>
+    <script src="/js/utils/storage.js" defer></script>
+    <script src="background.js" defer></script>
+    <script src="/js/background/backgroundCache.js" defer></script>
+    <script src="/js/features/googleSearch.js" defer></script>
+    <script src="/js/features/quote.js" defer></script>
+    <script src="/js/features/weather.js" defer></script>
+    <script src="/js/features/bookmarks.js" defer></script>
+    <script src="/js/features/notes.js" defer></script>
+    <script src="/js/background/reddit.js" defer></script>
+    <script src="/js/background/earthView.js" defer></script>
+    <script src="/js/background/unsplash.js" defer></script>
+    <script src="/js/background/pixabay.js" defer></script>
+    <script src="/js/background/imgur.js" defer></script>
+    <script src="/js/background/localImages.js" defer></script>
+    <script src="/js/ai/aicomponents.js" defer></script>
+    <script src="/js/ai/gemini.js" defer></script>
+    <script src="/js/ai/openrouter.js" defer></script>
+    <script src="/js/ai/greetings.js" defer></script>
+    <script src="/js/utils/settings.js" defer></script>
+    <script src="/js/background/imageGallery.js" defer></script>
+    <script src="/js/utils/domload.js" defer></script>
+    <script src="/js/features/spotify.js" defer></script>
+</head>
+
+<body>
+    <div id="background-container">
+        <div class="background-loader">Loading background...</div>
+    </div>
+    <!-- Settings Menu -->
+    <div id="settingsContainer">
+        <div id="settingsBtnContainer">
+            <button id="settingsBtn" class="container-button" title="Open Settings">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="settings-icon">
+                    <circle cx="12" cy="12" r="3"></circle>
+                    <path
+                        d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z">
+                    </path>
+                </svg>
+            </button>
+        </div>
+        <div id="settingsDropdown">
+            <div id="settingsHeader">
+                <h2>Settings</h2>
+                <button class="close-settings-btn" id="closeSettingsBtn" title="Close Settings">×</button>
+            </div>
+            <hr class="solid">
+            <div class="settings-section">
+                <h4>Location</h4>
+                <div class="settings-option">
+                    <input type="radio" id="auto-location" name="location-type" value="auto" checked>
+                    <label for="auto-location">Auto-detect location</label>
+                </div>
+                <div class="settings-option">
+                    <input type="radio" id="custom-location" name="location-type" value="custom">
+                    <label for="custom-location">Custom location</label>
+                </div>
+                <div id="custom-location-input" class="hidden">
+                    <input type="text" id="city-input" placeholder="Enter city name">
+                    <button id="save-location">Save</button>
+                </div>
+            </div>
+            <div class="settings-section">
+                <h4>Display Options</h4>
+                <div class="settings-option">
+                    <input type="checkbox" id="show-all" checked>
+                    <label for="show-all">Show all elements</label>
+                </div>
+                <div class="settings-option">
+                    <input type="checkbox" id="clean-ui" name="clean-ui">
+                    <label for="clean-ui">Clean UI</label>
+                </div>
+                <div class="settings-option">
+                    <input type="checkbox" id="show-weather" checked>
+                    <label for="show-weather">Show weather</label>
+                </div>
+                <div class="settings-option">
+                    <input type="checkbox" id="show-clock" checked>
+                    <label for="show-clock">Show clock</label>
+                </div>
+                <div class="settings-option">
+                    <input type="checkbox" id="show-greeting">
+                    <label for="show-greeting">Show AI greeting</label>
+                    <div class="greeting-preferences">
+                        <div class="user-name-container">
+                            <input type="text" id="user-name-input" placeholder="Your name (optional)">
+                            <button id="save-user-name">Save</button>
+                        </div>
+                        <div class="mood-selector">
+                            <label for="greeting-mood">Greeting mood:</label>
+                            <select id="greeting-mood">
+                                <option value="grumpy">Grumpy</option>
+                                <option value="normal" selected>Normal</option>
+                                <option value="motivated">Motivated</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="settings-option">
+                    <input type="checkbox" id="show-google-search" checked>
+                    <label for="show-google-search">Show Google search</label>
+                </div>
+                <div class="settings-option">
+                    <input type="checkbox" id="show-quotes" checked>
+                    <label for="show-quotes">Show quotes</label>
+                </div>
+                <div class="settings-option">
+                    <input type="checkbox" id="show-bookmarks" checked>
+                    <label for="show-bookmarks">Show quick links</label>
+                </div>
+                <div class="settings-option sub-option" id="bookmarks-hover-container">
+                    <input type="checkbox" id="bookmarks-hover-hide" disabled>
+                    <label for="bookmarks-hover-hide">Hide until hover</label>
+                </div>
+                <div class="settings-option quote-content-container">
+                    <label for="quote-content" class="quote-content">Content:</label>
+                    <select id="quote-content" class="settings-dropdown">
+                        <option value="tr_books">Turkish Books</option>
+                        <option value="en_books">English Books</option>
+                        <option value="movies">Movies</option>
+                        <option value="useless_facts">Useless Facts</option>
+                        <option value="fun_facts">Fun Facts</option>
+                    </select>
+                </div>
+                <div class="settings-option">
+                    <input type="checkbox" id="show-location-info" checked>
+                    <label for="show-location-info">Show location info</label>
+                </div>
+                <div class="settings-option">
+                    <input type="checkbox" id="show-background" checked>
+                    <label for="show-background">Show background image</label>
+                </div>
+                <div class="settings-option bg-opacity-container">
+                    <label for="bg-opacity">Background opacity:</label>
+                    <input type="range" id="bg-opacity" min="0.1" max="1" step="0.1" value="1">
+                    <span id="opacity-value">100%</span>
+                </div>
+                <div class="settings-option" id="schedule-settings-container">
+                    <label for="background-schedule-option">Background Change Schedule:</label>
+                    <select id="background-schedule-option" class="settings-dropdown">
+                        <option value="manual">Never</option>
+                        <option value="every-session">Every New Session</option>
+                        <option value="hourly">Every Hour</option>
+                        <option value="daily">Every Day</option>
+                    </select>
+                </div>
+                <h4>Background Source</h4>
+                <div class="settings-option">
+                    <input type="radio" id="reddit-background" name="background-source" value="reddit" checked>
+                    <label for="reddit-background">Reddit</label>
+                    <div id="reddit-settings" class="sub-settings">
+                        <div class="settings-option" id="set-reddit">
+                            <label for="subreddit-select" id="sub-label">Subs:</label>
+                            <div id="subreddit-dropdown-container"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="settings-option">
+                    <input type="radio" id="earth-background" name="background-source" value="earth">
+                    <label for="earth-background">Google Earth View</label>
+                </div>
+                <div class="settings-option" id="unsplash-settings-container">
+                    <input type="radio" id="unsplash-background" name="background-source" value="unsplash">
+                    <label for="unsplash-background">Unsplash</label>
+                    <div id="unsplash-settings" class="sub-settings">
+                        <div class="settings-option api-key-input">
+                            <label for="unsplash-api-key">Unsplash API Key:</label>
+                            <input type="password" id="unsplash-api-key" placeholder="Enter your Unsplash API key">
+                            <button id="save-unsplash-key" class="settings-button">Save</button>
+                            <div class="api-key-info">
+                                <small>Get your API key from <a href="https://unsplash.com/developers" target="_blank"
+                                        rel="noopener">Unsplash Developers</a></small>
+                            </div>
+                        </div>
+                        <div class="settings-option">
+                            <label for="unsplash-categories" class="unsplash-categories">Categories:</label>
+                            <select id="unsplash-categories" class="settings-dropdown">
+                                <!-- Categories will be populated from JavaScript -->
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="settings-option" id="pixabay-settings-container">
+                    <input type="radio" id="pixabay-background" name="background-source" value="pixabay">
+                    <label for="pixabay-background">Pixabay</label>
+                    <div id="pixabay-settings" class="sub-settings">
+                        <div class="settings-option api-key-input">
+                            <label for="pixabay-api-key">Pixabay API Key:</label>
+                            <input type="password" id="pixabay-api-key" placeholder="Enter your Pixabay API key">
+                            <button id="save-pixabay-key" class="settings-button">Save</button>
+                            <div class="api-key-info">
+                                <small>Get your API key from <a href="https://pixabay.com/api/docs/" target="_blank"
+                                        rel="noopener">Pixabay API</a></small>
+                            </div>
+                        </div>
+                        <div class="settings-option">
+                            <label for="pixabay-categories" class="pixabay-categories">Categories:</label>
+                            <select id="pixabay-categories" class="settings-dropdown">
+                                <!-- Categories will be populated from JavaScript -->
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="settings-option" id="imgur-settings-container">
+                    <input type="radio" id="imgur-background" name="background-source" value="imgur">
+                    <label for="imgur-background">Imgur</label>
+                    <div id="imgur-settings" class="sub-settings">
+                        <div class="settings-option">
+                            <label for="imgur-url-select">Saved URLs:</label>
+                            <small>Choose from your saved Imgur URLs</small>
+                            <select id="imgur-url-select" class="settings-dropdown">
+                                <option value="">Select a saved URL...</option>
+                            </select>
+                        </div>
+                        <button id="delete-imgur-url" class="settings-button">Delete</button>
+                        <div class="settings-option">
+                            <label for="imgur-url">Imgur URL:</label>
+                            <input type="text" id="imgur-url"
+                                placeholder="e.g., imgur.com/a/xyz, imgur.com/gallery/xyz, imgur.com/t/tag">
+                            <input type="text" id="imgur-url-name" placeholder="Name (e.g. Album name, Tag name)">
+                            <small>Enter an album, gallery, tag URL, or single image from Imgur</small>
+                            <button id="save-imgur-url" class="settings-button">Save URL</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="settings-option">
+                    <input type="radio" id="local-background" name="background-source" value="local">
+                    <label for="local-background">Local Images</label>
+                    <div id="local-settings" class="sub-settings">
+                        <div class="settings-option">
+                            <label for="local-image-source">Image Source:</label>
+                            <select id="local-image-source" class="settings-dropdown">
+                                <option value="single">Single Image</option>
+                                <option value="gallery">My Gallery</option>
+                            </select>
+                        </div>
+                        <div id="single-image-settings" class="settings-option">
+                            <input type="file" id="local-image-upload" accept="image/*"
+                                title="Upload an image from your device">
+                            <small>Upload an image from your device</small>
+                        </div>
+                        <div id="gallery-settings" class="settings-option">
+                            <small>Select any image from your gallery to use as background</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="settings-section">
+                <h4>Weather</h4>
+                <div class="settings-option api-key-input">
+                    <label for="openweather-api-key">OpenWeather API Key:</label>
+                    <input type="password" id="openweather-api-key" placeholder="Enter your OpenWeather API key">
+                    <button id="save-openweather-key" class="settings-button">Save</button>
+                    <div class="api-key-info">
+                        <small>Get your API key from <a href="https://openweathermap.org/api" target="_blank"
+                                rel="noopener">OpenWeather</a></small>
+                    </div>
+                </div>
+            </div>
+            <div class="settings-section">
+                <h4>Gemini AI</h4>
+                <div class="settings-option api-key-input">
+                    <label for="gemini-api-key">Gemini API Key:</label>
+                    <input type="password" id="gemini-api-key" placeholder="Enter your Gemini API key">
+                    <button id="save-gemini-key" class="settings-button">Save</button>
+                </div>
+                <div class="api-key-info">
+                    <small>Get your API key from <a href="https://ai.google.dev/" target="_blank" rel="noopener">Google
+                            AI Studio</a></small>
+                </div>
+            </div>
+            <div class="settings-section">
+                <h4>OpenRouter AI</h4>
+                <div class="settings-option api-key-input">
+                    <label for="openrouter-api-key">OpenRouter API Key:</label>
+                    <input type="password" id="openrouter-api-key" placeholder="Enter your OpenRouter API key">
+                    <button id="save-openrouter-key" class="settings-button">Save</button>
+                </div>
+                <div class="api-key-info">
+                    <small>Get your API key from <a href="https://openrouter.ai/keys" target="_blank"
+                            rel="noopener">OpenRouter</a></small>
+                </div>
+            </div>
+            <div class="settings-section">
+                <div id="spotify-login-status">
+                    <div id="spotify-logged-out" class="hidden">
+                        <p>You are not logged in to Spotify</p>
+                        <button id="spotify-login-btn" class="settings-button">Login to Spotify</button>
+                    </div>
+                    <div id="spotify-logged-in" class="hidden">
+                        <p>You are logged in to Spotify</p>
+                        <button id="spotify-logout-btn" class="settings-button">Logout from Spotify</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="spotify-wrapper" id="spotifyWrapper">
+        <div id="expansionTile">
+            <div id="expandableContent">
+                <div id="spotifyContainer">
+                    <div id="spotifyHeader">
+                        <img src="/assets/images/Spotify_Logo_Full.png" alt="Spotify Logo">
+                        <button class="close-spotify-btn">×</button>
+                    </div>
+                    <div id="spotifySecondLayer">
+                        <div id="search">
+                            <div id="searchBar">
+                                <input type="text" id="searchInput" placeholder="Search Spotify...">
+                                <button id="searchBtn">Search</button>
+                            </div>
+                            <div id="searchType">
+                                <input type="radio" id="track-radio" name="search_type" value="track" checked>
+                                <label for="track-radio">Tracks</label>
+                                <input type="radio" id="album-radio" name="search_type" value="album">
+                                <label for="album-radio">Albums</label>
+                                <input type="radio" id="playlist-radio" name="search_type" value="playlist">
+                                <label for="playlist-radio">Playlists</label>
+                                <input type="radio" id="all-radio" name="search_type" value="all">
+                                <label for="all-radio">All</label>
+                            </div>
+                        </div>
+                        <select id="playlistDropdown" title="Select a Playlist">
+                            <option value="">Select a Playlist</option>
+                        </select>
+                        <div id="playerContainer">
+                            <iframe id="spotifyFrame" width="300" height="380" frameborder="0" allowtransparency="true"
+                                allow="encrypted-media" title="Spotify Player"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="greetingContainer" class="greeting-container">
+        Hello there! [Loading your personal greeting...]
+    </div>
+    <div class="greeting-preferences">
+        <label for="greeting-toggle">Enable Greeting:</label>
+        <input type="checkbox" id="greeting-toggle">
+    </div>
+    <div id="weatherStatus" class="weather-container">
+        <!-- Weather information will be displayed here -->
+        <!-- Greeting container - this will be visible when the greeting option is enabled -->
+
+    </div>
+    <div class="bodyWrapper" id="bodyWrapper">
+        <div id="googleSearch">
+            <input type="text" id="googleSearchInput" placeholder="Google Search...">
+            <button class="search-icon" aria-label="Search">🔎︎</button>
+            <div id="autocompleteResults"></div>
+        </div>
+        <!-- Bookmarks Section -->
+        <div id="bookmarksSection">
+            <div id="bookmarksContainer">
+                <!-- Bookmarks will be added here dynamically -->
+                <!-- Add button will be appended to the grid -->
+            </div>
+        </div>
+        <!-- Add Bookmark Modal -->
+        <div id="bookmarkModal">
+            <div id="bookmarkModalContent">
+                <h3>Add Bookmark</h3>
+                <form id="bookmarkForm">
+                    <div class="form-group">
+                        <label for="bookmarkUrl">URL</label>
+                        <input type="text" id="bookmarkUrl" placeholder="https://example.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="bookmarkTitle">Title (Optional)</label>
+                        <input type="text" id="bookmarkTitle" placeholder="My Favorite Site">
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" id="cancelAddBookmark">Cancel</button>
+                        <button type="submit" id="saveBookmark">Add</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!-- Quote Section -->
+        <div id="quote-container" class="hidden">
+            <img id="quote-image" src="" alt="Book cover">
+            <div id="quote-header">
+                <p id="quote-text"></p>
+                <div id="quote-info">
+                    <p id="quote-author"></p>
+                    <p id="quote-book"></p>
+                </div>
+            </div>
+            <button class="quote-refresh-btn" title="Refresh Quote">↻</button>
+        </div>
+        <!-- Quote Favorites -->
+        <div id="quote-favorites-container">
+            <div class="favorites-header">
+                <h3>Favorite Quotes</h3>
+                <button class="close-quote-favorites">×</button>
+            </div>
+            <div id="favorites-content"></div>
+        </div>
+        <!-- Image Gallery -->
+        <div id="imageGalleryContainer">
+            <div id="imageGalleryPanel">
+                <div class="gallery-header">
+                    <h3>Image Gallery</h3>
+                    <button class="close-gallery">×</button>
+                </div>
+                <div class="gallery-content"></div>
+            </div>
+        </div>
+    </div>
+    <!-- Image Preview Modal -->
+    <div id="imagePreviewModal">
+        <div class="preview-content">
+            <button class="close-preview">×</button>
+            <img src="" alt="Preview">
+        </div>
+    </div>
+    <!-- Buttons Container -->
+    <div id="buttonsContainer" class="buttons-container">
+        <button id="toggleExpandBtn" class="container-button" title="View Spotify">
+            <img src="/assets/images/Spotify_Logo.png" alt="Spotify Logo" title="Listen to Spotify">
+        </button>
+        <button id="geminiToggleBtn" class="container-button" title="Chat with Gemini AI">
+            <span>💬</span>
+        </button>
+        <button id="openrouterToggleBtn" class="container-button" title="Chat with OpenRouter AI">
+            <span>🤖</span>
+        </button>
+        <button id="galleryToggleBtn" class="container-button" title="Toggle Image Gallery">
+            <span class="gallery-icon">🖽</span>
+        </button>
+        <button id="quoteFavoritesBtn" class="container-button" title="View favorite quotes">
+            <span class="gallery-icon">📚</span>
+        </button>
+        <button id="notesBtn" class="container-button" title="View notes">
+            <span class="notes-icon">🗉</span>
+        </button>
+    </div>
+    <!-- Gemini Chat -->
+    <div class="gemini-chat-container" id="geminiChatContainer">
+        <div id="geminiChatPanel">
+            <div class="gemini-header">
+                <img src="/assets/images/Gemini-Logo.png" alt="Gemini Logo">
+                <button class="clean-gemini-chat" title="Clear conversation">
+                    <svg width="32px" height="32px" viewBox="0 0 17.00 17.00" version="1.1"
+                        xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                        class="si-glyph si-glyph-brush-1" fill="#ccc" stroke="#ccc" transform="rotate(0)">
+                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round" stroke="#CCCCCC"
+                            stroke-width="0.17"></g>
+                        <g id="SVGRepo_iconCarrier">
+                            <title>880</title>
+                            <defs> </defs>
+                            <g stroke-width="0.34" fill="none" fill-rule="evenodd">
+                                <g transform="translate(1.000000, 0.000000)" fill="#171717">
+                                    <path
+                                        d="M0.056,8.306 L4.364,4.955 L11.067,11.66 L7.717,15.968 C7.717,15.968 7.761,14.914 6.28,14.531 C4.89,14.172 4.648,12.243 3.437,11.843 C2.226,11.443 2.011,10.601 1.451,9.698 C0.891,8.795 0.056,8.306 0.056,8.306 L0.056,8.306 Z"
+                                        class="si-glyph-fill"> </path>
+                                    <path
+                                        d="M12.981,7.83 L11.835,6.684 C13.676,5.081 15.114,3.782 15.372,3.522 C16.167,2.729 16.165,1.444 15.372,0.651 C14.579,-0.143 13.292,-0.143 12.499,0.649 C12.241,0.909 10.94,2.346 9.339,4.189 L8.193,3.043 C7.664,2.514 6.806,2.513 6.277,3.042 L5.32,3.999 L12.024,10.704 L12.982,9.745 C13.51,9.217 13.51,8.358 12.981,7.83 L12.981,7.83 Z M13.246,2.777 C12.863,2.394 12.863,1.775 13.246,1.393 C13.627,1.011 14.246,1.012 14.629,1.394 C15.012,1.777 15.012,2.396 14.629,2.777 C14.247,3.16 13.629,3.16 13.246,2.777 L13.246,2.777 Z"
+                                        class="si-glyph-fill"> </path>
+                                </g>
+                            </g>
+                        </g>
+                    </svg>
+                </button>
+                <button class="close-gemini">×</button>
+                <div class="gemini-model-selector">
+                    <select id="geminiModelSelect" title="Select a Gemini AI model">
+                        <option value="">Loading models...</option>
+                    </select>
+                </div>
+            </div>
+            <div class="gemini-messages" id="geminiMessages"></div>
+            <div class="gemini-input-container">
+                <textarea id="geminiInput" placeholder="Ask Gemini something..."></textarea>
+                <div class="gemini-actions">
+                    <div class="gemini-action-buttons">
+                        <label for="geminiImageUpload" class="image-upload-btn" title="Upload image">
+                            <span>🖼️</span>
+                            <input type="file" id="geminiImageUpload" accept="image/*" hidden>
+                        </label>
+                        <label for="geminiDocUpload" class="doc-upload-btn" title="Upload document">
+                            <span>📄</span>
+                            <input type="file" id="geminiDocUpload" accept=".txt,.pdf,.docx" hidden>
+                        </label>
+                    </div>
+                    <div class="side-actions">
+                        <button id="geminiSearchBtn" class="search-btn" title="Search with Gemini">
+                            <span>🔍</span>
+                        </button>
+                        <button id="geminiGenerateImageBtn" class="image-btn" title="Generate an image with Gemini">
+                            <span>🖌️</span>
+                        </button>
+                        <button id="geminiSendBtn">Send</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- OpenRouter Chat -->
+    <div class="openrouter-chat-container" id="openrouterChatContainer">
+        <div id="openrouterChatPanel">
+            <div class="openrouter-header">
+                <h3 class="openrouter-header-title">OpenRouter AI</h3>
+                <button class="clean-openrouter-chat" title="Clear conversation">
+                    <svg width="32px" height="32px" viewBox="0 0 17.00 17.00" version="1.1"
+                        xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                        class="si-glyph si-glyph-brush-1" fill="#ccc" stroke="#ccc" transform="rotate(0)">
+                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round" stroke="#CCCCCC"
+                            stroke-width="0.17"></g>
+                        <g id="SVGRepo_iconCarrier">
+                            <title>880</title>
+                            <defs> </defs>
+                            <g stroke-width="0.34" fill="none" fill-rule="evenodd">
+                                <g transform="translate(1.000000, 0.000000)" fill="#171717">
+                                    <path
+                                        d="M0.056,8.306 L4.364,4.955 L11.067,11.66 L7.717,15.968 C7.717,15.968 7.761,14.914 6.28,14.531 C4.89,14.172 4.648,12.243 3.437,11.843 C2.226,11.443 2.011,10.601 1.451,9.698 C0.891,8.795 0.056,8.306 0.056,8.306 L0.056,8.306 Z"
+                                        class="si-glyph-fill"> </path>
+                                    <path
+                                        d="M12.981,7.83 L11.835,6.684 C13.676,5.081 15.114,3.782 15.372,3.522 C16.167,2.729 16.165,1.444 15.372,0.651 C14.579,-0.143 13.292,-0.143 12.499,0.649 C12.241,0.909 10.94,2.346 9.339,4.189 L8.193,3.043 C7.664,2.514 6.806,2.513 6.277,3.042 L5.32,3.999 L12.024,10.704 L12.982,9.745 C13.51,9.217 13.51,8.358 12.981,7.83 L12.981,7.83 Z M13.246,2.777 C12.863,2.394 12.863,1.775 13.246,1.393 C13.627,1.011 14.246,1.012 14.629,1.394 C15.012,1.777 15.012,2.396 14.629,2.777 C14.247,3.16 13.629,3.16 13.246,2.777 L13.246,2.777 Z"
+                                        class="si-glyph-fill"> </path>
+                                </g>
+                            </g>
+                        </g>
+                    </svg>
+                </button>
+                <button class="close-openrouter">×</button>
+                <div class="openrouter-model-selector">
+                    <select id="openrouterModelSelect" title="Select an OpenRouter AI model">
+                        <option value="deepseek/deepseek-r1:free">DeepSeek R1</option>
+                    </select>
+                </div>
+            </div>
+            <div class="openrouter-messages" id="openrouterMessages"></div>
+            <div class="openrouter-input-container">
+                <textarea id="openrouterInput" placeholder="Ask OpenRouter something..."></textarea>
+                <div class="openrouter-actions">
+                    <div class="openrouter-action-buttons">
+                        <label for="openrouterImageUpload" class="image-upload-btn" title="Upload image">
+                            <span>🖼️</span>
+                            <input type="file" id="openrouterImageUpload" accept="image/*" hidden>
+                        </label>
+                        <label for="openrouterDocUpload" class="doc-upload-btn" title="Upload document">
+                            <span>📄</span>
+                            <input type="file" id="openrouterDocUpload" accept=".txt,.pdf,.docx" hidden>
+                        </label>
+                    </div>
+                    <div class="side-actions">
+                        <button id="openrouterSearchBtn" class="search-btn" title="Search with OpenRouter">
+                            <span>🔍</span>
+                        </button>
+                        <button id="openrouterSendBtn">Send</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Overlay elements for dimming effect -->
+    <div class="overlay" id="geminiOverlay"></div>
+    <div class="overlay" id="openrouterOverlay"></div>
+    <div class="location-buttons-container" id="locationButtonsContainer">
+        <!-- Refresh Background Button -->
+        <button class="refresh-background-btn" title="Refresh Background">
+            <span>↻</span>
+        </button>
+        <!-- Save Image Button -->
+        <button class="save-image-btn" title="Save Current Background">
+            <span class="gallery-icon">💾</span>
+        </button>
+        <!-- Fullscreen Toggle Button -->
+        <button id="fullscreenToggleBtn" title="Toggle Image Display Mode">
+            <span>🡙</span>
+        </button>
+    </div>
+    <!-- Notes Modal-->
+    <div class="notes-modal" id="notesModal">
+        <div class="notes-modal-header">
+            <i class="fas fa-book"></i>
+            <h3>Notes</h3>
+            <button class="close-notes-btn" id="closeNotesBtn"" title=" Close Notes">×</button>
+        </div>
+    </div>   
+  </div>
+</body>
+
+</html>

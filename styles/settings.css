@@ -1,0 +1,527 @@
+#settingsContainer {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    height: 100%;
+    z-index: 1000;
+}
+
+.settings-icon {
+    color: white;
+    stroke: white;
+}
+
+
+#settingsDropdown {
+    position: absolute;
+    top: 0px;
+    background-color: rgba(30, 30, 30, 0.95);
+    width: 350px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    color: white;
+    display: none;
+    height: 100%;
+    overflow-y: auto;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+}
+
+#settingsDropdown.visible {
+    display: block;
+    animation: fadeInScale 0.2s ease-out forwards;
+}
+
+#settingsHeader {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 10px 15px;
+    align-items: baseline;
+}
+
+#settingsHeader h2 {
+    margin: 0;
+    color: #1DB954;
+    font-size: 18px;
+}
+
+.close-settings-btn {
+    background-color: transparent;
+    border: none;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 20px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    height: 20px;
+    width: 20px;
+}
+
+.close-settings-btn:hover {
+    color: rgba(255, 255, 255, 1);
+}
+
+.settings-section {
+    padding: 7px 16px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.settings-section:last-child {
+    border-bottom: none;
+}
+
+.settings-section h4 {
+    margin: 0 0 5px 0;
+    font-size: 15px;
+    opacity: 0.9;
+}
+
+.settings-option {
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    position: relative;
+    flex-direction: column;
+    align-items: self-start;
+    gap: 15px;
+}
+
+/* Hide default inputs */
+.settings-option input[type="checkbox"],
+.settings-option input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.settings-option label {
+    font-size: 14px;
+    cursor: pointer;
+    padding-left: 32px;
+    position: relative;
+    -webkit-user-select: none;
+    user-select: none;
+    color: rgba(255, 255, 255, 0.8);
+    transition: color 0.2s ease;
+}
+
+/* Custom radio button */
+.settings-option input[type="radio"] + label::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 18px;
+    height: 18px;
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    border-radius: 50%;
+    background-color: transparent;
+    transition: all 0.2s ease;
+}
+
+.settings-option input[type="radio"]:checked + label::before {
+    border-color: #1DB954;
+}
+
+.settings-option input[type="radio"]:checked + label::after {
+    content: '';
+    position: absolute;
+    left: 6px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #1DB954;
+}
+
+/* Custom checkbox */
+.settings-option input[type="checkbox"] + label::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 18px;
+    height: 18px;
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    border-radius: 4px;
+    background-color: transparent;
+    transition: all 0.2s ease;
+}
+
+.settings-option input[type="checkbox"]:checked + label::before {
+    background-color: #1DB954;
+    border-color: #1DB954;
+}
+
+.settings-option input[type="checkbox"]:checked + label::after {
+    content: '';
+    position: absolute;
+    left: 6px;
+    top: 45%;
+    transform: translateY(-50%) rotate(45deg);
+    width: 6px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+}
+
+/* Hover states */
+.settings-option:hover label {
+    color: white;
+}
+
+.settings-option:hover input[type="radio"] + label::before,
+.settings-option:hover input[type="checkbox"] + label::before {
+    border-color: rgba(255, 255, 255, 0.8);
+}
+
+/* Focus states for accessibility */
+.settings-option input[type="radio"]:focus + label::before,
+.settings-option input[type="checkbox"]:focus + label::before {
+    box-shadow: 0 0 0 3px rgba(29, 185, 84, 0.3);
+}
+
+/* Disabled states */
+.settings-option input:disabled + label {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.settings-option input:disabled + label::before {
+    border-color: rgba(255, 255, 255, 0.2);
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+#gallery-settings {
+    display: none;
+}
+
+#greetingContainer {
+    display: none;
+}
+
+#custom-location-input {
+    margin-top: 10px;
+    display: flex;
+    gap: 8px;
+}
+
+#custom-location-input input {
+    flex-grow: 1;
+    padding: 4px;
+    border-radius: 4px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background-color: rgba(0, 0, 0, 0.2);
+    color: white;
+    font-size: 14px;
+}
+
+#custom-location-input button {
+    background-color: #1DB954;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 4px 12px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.2s ease;
+}
+
+#custom-location-input button:hover {
+    background-color: #1ed760;
+}
+
+.bg-opacity-container {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    flex-direction: column;
+}
+
+.bg-opacity-container label {
+    min-width: 130px;
+    padding: 0;
+}
+
+.bg-opacity-container input[type="range"] {
+    flex-grow: 1;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 3px;
+    cursor: pointer;
+    width: 100%;
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+.bg-opacity-container input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: #1DB954;
+    cursor: pointer;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.bg-opacity-container span {
+    min-width: 45px;
+    text-align: right;
+    font-size: 14px;
+}
+
+#spotify-login-status {
+    width: 100%;
+}
+
+#spotify-logged-out, #spotify-logged-in {
+    padding: 5px 0;
+}
+
+#spotify-logged-out p, #spotify-logged-in p {
+    margin: 0 0 10px;
+    font-size: 14px;
+    opacity: 0.9;
+}
+
+#settingsBtnContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    left: -20px;
+    top: 0px;
+    gap: 10px;
+    padding: 20px 40px 40px 40px;
+    transform: translateX(-70px);
+    transition: transform 0.5s ease;
+}
+
+#settingsBtnContainer:hover {
+    transform: translateX(0px);
+    transition: all 0.5s ease; 
+}
+
+.settings-button {
+    background-color: #1DB954;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: inline-block;
+    margin: auto;
+}
+
+.settings-button:hover {
+    background-color: #1ed760;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+}
+
+.forget-button {
+    background-color: #e74c3c;
+}
+
+.forget-button:hover {
+    background-color: #ff5545;
+}
+
+#spotify-logout-btn {
+    background-color: #e74c3c;
+}
+
+#spotify-logout-btn:hover {
+    background-color: #ff5545;
+}
+
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.sub-settings {
+    padding-left: 10px;
+    margin-bottom: 0;
+}
+
+#set-reddit {
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 10px;
+    width: auto;
+}
+#sub-label {
+    padding: 0px;
+}
+
+.settings-dropdown {
+    width: 100%;
+    padding: 4px;
+    border-radius: 4px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background-color: rgba(0, 0, 0, 0.2);
+    color: white;
+    font-size: 14px;
+}
+
+.settings-dropdown option {
+    background-color: #333;
+    color: white;
+}
+
+/* API Key Input Styles */
+.settings-option.api-key-input {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    align-items: center;
+    justify-content: center;
+}
+
+.settings-option.api-key-input input[type="password"],
+.settings-option input[type="text"] {
+    flex: 1;
+    min-width: 200px;
+    padding: 6px 10px;
+    border-radius: 4px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background-color: rgba(255, 255, 255, 0.1);
+    color: white;
+    margin:auto;
+}
+
+.settings-option.api-key-input label {
+    padding: 10px 0 0 0;
+}
+
+/* Removing the key-buttons container and styling the save button directly */
+.key-buttons {
+    display: none; /* Hide the key-buttons container */
+}
+
+/* Hide the forget buttons as they're not consistent with Gemini/OpenRouter design */
+#forget-openweather-key,
+#forget-unsplash-key {
+    display: none;
+}
+
+.api-key-info {
+    margin-top: 5px;
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.api-key-info a {
+    color: #1DB954;
+    text-decoration: none;
+}
+
+.api-key-info a:hover {
+    text-decoration: underline;
+}
+
+#unsplash-settings-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 200px;
+    margin: 0;
+    justify-content: flex-start;
+    align-items: start;
+    margin-bottom: 10px;
+}
+
+/* Settings feedback message */
+.settings-feedback {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%) translateY(100px);
+    background-color: rgba(30, 30, 30, 0.95);
+    color: white;
+    padding: 12px 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    z-index: 1100;
+    transition: transform 0.3s ease;
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    opacity: 0;
+}
+
+.settings-feedback.visible {
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
+}
+
+.settings-feedback.success {
+    border-left: 5px solid #1DB954;
+}
+
+.settings-feedback.error {
+    border-left: 5px solid #e74c3c;
+}
+
+.quote-content, .unsplash-categories {
+    padding-left: 2px !important;
+}
+
+.city-autocomplete-container {
+    position: absolute;
+    background-color: #333;
+    border: 1px solid var(--border-color, #999);
+    border-radius: 4px;
+    max-height: 200px;
+    overflow-y: auto;
+    width: 75%;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    z-index: 1000;
+    margin-top: 30px;
+}
+
+.city-autocomplete-item {
+    padding: 8px 12px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    border-bottom: 1px solid var(--border-color, #eee);
+}
+
+.city-autocomplete-item:last-child {
+    border-bottom: none;
+}
+
+.city-autocomplete-item:hover,
+.city-autocomplete-item.selected {
+    background-color: #444;
+}
+
+.city-autocomplete-container:empty {
+    display: none !important;
+}
+
+#delete-imgur-url {
+    background-color: #e74c3c;
+}
+
+
+#bookmarks-hover-container {
+    transform: translateX(30px);
+}
