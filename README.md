@@ -1,3 +1,4 @@
+[![If you are a good person...](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://buymeacoffee.com/lunedor)
 # Vortumna - Your Personalized New Tab Experience
 
 Vortumna is a browser extension designed to transform your new tab page into a dynamic, beautiful, and intelligent dashboard. It offers a wide array of customizable backgrounds, integrated AI chatbots, personalized greetings, and much more to make every new tab inspiring and productive.
