@@ -6,12 +6,12 @@
     --background-color: #171717;
     --box-shadow: 0 0px 8px rgba(0, 0, 0, 0.3);
     --border-bottom: none;
-    
+
     /* Typography */
     --font-primary: 'Segoe UI', 'Inter', sans-serif;
     --font-secondary: 'Inter', 'Segoe UI', sans-serif;
     --font-accent: 'Open Sans', 'Segoe UI', sans-serif;
-    
+
     --font-weight-thin: 200;
     --font-weight-light: 300;
     --font-weight-regular: 400;
@@ -63,7 +63,8 @@ body.dark-theme {
     z-index: -1;
     overflow: hidden;
 }
-.background-container img  {
+
+.background-container img {
     background-image: cover !important;
 }
 
@@ -165,9 +166,17 @@ body.dark-theme {
 }
 
 @keyframes pulse {
-    0% { opacity: 0.7; }
-    50% { opacity: 1; }
-    100% { opacity: 0.7; }
+    0% {
+        opacity: 0.7;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0.7;
+    }
 }
 
 hr.solid {
@@ -175,7 +184,7 @@ hr.solid {
     filter: drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.5));
 }
 
-.container-button { 
+.container-button {
     border-radius: 50%;
     width: 42px;
     height: 42px;
@@ -195,20 +204,21 @@ hr.solid {
     transform: rotate(-360deg);
 }
 
-#settingsBtn:hover{
+#settingsBtn:hover {
     transform: rotate(360deg);
 }
-#notesBtn{
+
+#notesBtn {
     color: white;
     font-size: 26px;
 }
 
-#pomodoroBtn{
+#pomodoroBtn {
     color: white;
     font-size: 21px;
 }
 
-.feedback{
+.feedback {
     color: white;
     font-size: 14px;
     position: fixed;
@@ -219,7 +229,9 @@ hr.solid {
     background-color: rgba(25, 135, 84, 0.9);
 }
 
-#fullscreenToggleBtn, .save-image-btn, .refresh-background-btn {
+#fullscreenToggleBtn,
+.save-image-btn,
+.refresh-background-btn {
     display: flex;
     position: relative;
     z-index: 15;
@@ -233,14 +245,18 @@ hr.solid {
     transition: all 0.5s ease;
 }
 
-#fullscreenToggleBtn:hover, .save-image-btn:hover, .refresh-background-btn:hover, .location-info:hover {
+#fullscreenToggleBtn:hover,
+.save-image-btn:hover,
+.refresh-background-btn:hover,
+.location-info:hover {
     opacity: 1 !important;
 }
 
-#fullscreenToggleBtn span, .refresh-background-btn span {
+#fullscreenToggleBtn span,
+.refresh-background-btn span {
     color: white;
     font-size: 26px;
-    margin:auto;
+    margin: auto;
 }
 
 .location-buttons-container {
@@ -278,6 +294,8 @@ hr.solid {
     justify-content: center;
     align-items: center;
     line-height: 1.5;
+    width: 50%;
+    margin: auto;
 }
 
 /* Fade in animation for greeting */
@@ -286,6 +304,11 @@ hr.solid {
 }
 
 @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
 }

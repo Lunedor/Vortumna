@@ -1,10 +1,11 @@
 // List of subreddits for wallpapers/backgrounds
 const SUBREDDIT_LIST = [
-    'Cinemagraphs', 'EarthPorn', 'SpacePorn', 'ArtPorn', 'SkyPorn', 'AerialPorn', 'NatureIsFuckingLit', 
-    'WeatherPorn', 'WaterPorn', 'WinterPorn', 'AutumnPorn', 'SpringPorn', 'BeachPorn', 
+    'Cinemagraphs', 'EarthPorn', 'SpacePorn', 'ArtPorn', 'SkyPorn', 'AerialPorn', 'NatureIsFuckingLit',
+    'WeatherPorn', 'WaterPorn', 'WinterPorn', 'AutumnPorn', 'SpringPorn', 'BeachPorn',
     'VillagePorn', 'AgriculturePorn', 'CityPorn', 'DesignPorn', 'ExposurePorn',
-    'lightpainting','Wallpaper', 'WidescreenWallpaper', 'WQHD_Wallpaper', 
-    'ultrawidewallpapers', 'NaturePhotography', 'NaturePics'
+    'lightpainting', 'Wallpaper', 'WidescreenWallpaper', 'WQHD_Wallpaper',
+    'ultrawidewallpapers', 'NaturePhotography', 'NaturePics', 'Sexy4KWallpaper', 'NSFW_Wallpapers',
+	'blacked', 'TurkishCeleb', 'TurkishCelebrityReal', 'TiktokBabesTurkish'
 ];
 
 // Function to fetch and display an image from a subreddit RSS feed
@@ -16,7 +17,7 @@ function fetchAndDisplayImage(onImageLoad = null) {
             const httpRequest = new XMLHttpRequest();
             const url = `https://www.reddit.com/r/${selectedSubreddit}.rss?limit=100`;
 
-            httpRequest.onreadystatechange = function() {
+            httpRequest.onreadystatechange = function () {
                 if (this.readyState === 4) {
                     if (this.status === 200) {
                         const parser = new DOMParser();
@@ -42,18 +43,18 @@ function fetchAndDisplayImage(onImageLoad = null) {
                             const randomIndex = Math.floor(Math.random() * imageUrls.length);
                             const selectedImageUrl = imageUrls[randomIndex];
                             let selectedTitle = titles[selectedImageUrl];
-                            
+
                             // Clean up the title by removing square brackets and their contents
                             selectedTitle = selectedTitle.replace(/\[[^\]]*\]|\([^)]*\)/g, '').trim();
-                            
+
                             // Store the clean title and subreddit globally for the gallery
                             window.currentRedditTitle = selectedTitle;
                             window.currentRedditSubreddit = selectedSubreddit;
-                            
+
                             // Create image element
                             const imgElement = document.createElement('img');
                             imgElement.className = 'background-image';
-                            
+
                             // Set up onload event to handle the loading indicator
                             imgElement.onload = () => {
                                 if (onImageLoad) {
@@ -63,22 +64,30 @@ function fetchAndDisplayImage(onImageLoad = null) {
                                     // Fallback to original behavior if no callback provided
                                     const bgContainer = document.getElementById('background-container');
                                     bgContainer.innerHTML = '';
-                                    bgContainer.appendChild(imgElement);
+
+                                    // Apply display mode if manager is available
+                                    if (window.backgroundManager && typeof window.backgroundManager.applyDisplayModeToImage === 'function') {
+                                        window.backgroundManager.applyDisplayModeToImage(imgElement).then(() => {
+                                            bgContainer.appendChild(imgElement);
+                                        });
+                                    } else {
+                                        bgContainer.appendChild(imgElement);
+                                    }
                                 }
-                                
+
                                 // Create or update location info with subreddit info using the utility function
                                 window.createOrUpdateLocationInfo(
                                     selectedTitle || 'Reddit Image',
                                     `https://www.reddit.com/r/${selectedSubreddit}`,
                                     `r/${selectedSubreddit}`
                                 );
-                                
+
                                 resolve();
                             };
-                            
+
                             // Set image source to trigger the load
                             imgElement.src = selectedImageUrl;
-                            
+
                         } else {
                             reject(new Error('No valid images found in the feed'));
                         }
@@ -99,15 +108,15 @@ function fetchAndDisplayImage(onImageLoad = null) {
 function populateSubredditDropdown(containerId) {
     const container = document.getElementById(containerId);
     if (!container) return;
-    
+
     // Clear existing content
     container.innerHTML = '';
-    
+
     // Create select element
     const select = document.createElement('select');
     select.id = 'subreddit-select';
     select.className = 'settings-dropdown';
-    
+
     // Add options for each subreddit
     SUBREDDIT_LIST.forEach(subreddit => {
         const option = document.createElement('option');
@@ -115,15 +124,15 @@ function populateSubredditDropdown(containerId) {
         option.textContent = `r/${subreddit}`;
         select.appendChild(option);
     });
-    
+
     // Set selected value based on storage
     storage.get('selectedSubreddit').then(result => {
         const selectedSubreddit = result && result.selectedSubreddit ? result.selectedSubreddit : 'EarthPorn';
         select.value = selectedSubreddit;
     });
-    
+
     // Add change event listener
-    select.addEventListener('change', function() {
+    select.addEventListener('change', function () {
         storage.set({ selectedSubreddit: this.value }).then(() => {
             storage.get('backgroundSource').then(result => {
                 const backgroundSource = result && result.backgroundSource;
@@ -140,7 +149,7 @@ function populateSubredditDropdown(containerId) {
             });
         });
     });
-    
+
     // Append to container
     container.appendChild(select);
 }
@@ -153,7 +162,7 @@ function populateSubredditDropdown(containerId) {
 function loadRedditBackground(forceUpdate = false) {
     console.log(`Loading Reddit background (force: ${forceUpdate})`);
     const bgContainer = document.getElementById('background-container');
-    
+
     return new Promise((resolve) => {
         // Check cache first unless forced to update
         if (!forceUpdate && window.backgroundCache) {

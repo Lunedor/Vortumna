@@ -47,12 +47,13 @@ function getFaviconUrl(url) {
         const domain = parsedUrl.hostname.replace('www.', '');
         
         return [
+		
+			// Secondary method: Use actual favicon URL from target site
+            `${parsedUrl.origin}/favicon.ico`,
+			
             // Primary method: Google's S2 service with direct domain
             `https://www.google.com/s2/favicons?domain=${parsedUrl.origin}&sz=64`,
-            
-            // Secondary method: Use actual favicon URL from target site
-            `${parsedUrl.origin}/favicon.ico`,
-            
+                      
             // Fallback to Clearbit's logo API (no API key needed)
             `https://logo.clearbit.com/${domain}`,
             
