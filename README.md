@@ -156,7 +156,7 @@ Contributions are welcome! If you have ideas for new features, improvements, or 
 
 ## 📄 License
 
-This project is licensed under the MIT License (You'll need to create a LICENSE.md file if you choose MIT or another license).
+This project is licensed under the MITLicense - see the [LICENSE](LICENSE) file for details.
 
 ---
 
